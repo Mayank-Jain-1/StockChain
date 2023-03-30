@@ -2,12 +2,6 @@
 
 pragma solidity >=0.8.2 < 0.9.0;
 
-/**
- * @title Storage
- * @dev Store & retrieve value in a variable
- * @custom:dev-run-script ./scripts/deploy_with_ethers.ts
- */
-
 struct BuyTransaction {
         address stockid;
         uint256 buyprice;
@@ -26,39 +20,25 @@ struct CurrentTransaction {
         address stockid;
         uint256 amount;
     }
-contract Temp{
-    uint256 public transactid;
-    function increment() public {
 
-        transactid = 12345;
-
-    }
-    
-}
 contract Trader {
+
+    SellTransaction[] public sellTransact;
+    BuyTransaction[] public buyTransact;
+    CurrentTransaction[] public currentTransact;
 
     address public metamaskid;
     string public name;
     
-    SellTransaction[] public sellTransact;
-    BuyTransaction[] public buyTransact;
-    
-    Temp public transactionid;
-    
-    // constructor(address counterAddress) {
 
-    //     transactionid = Temp(counterAddress);
-
-    // }
-
-    function setter() public{
-        
-        transactionid.increment();
+    function retriveSellDetails(address _stockid,uint256 _sellprice,uint256 _amount,uint256 _timestamp,uint256 _transactionid)public{
+        sellTransact.push(SellTransaction(_stockid,_sellprice,_amount,_timestamp,_transactionid));
     }
 
-
-    function retrive(address _stockid,uint256 _sellprice,uint256 _amount,uint256 _timestamp,uint256 _transactionid)public{
-        sellTransact.push(SellTransaction(_stockid,_sellprice,_amount,_timestamp,_transactionid));
-}
-    
+    function retriveBuyDetails(address _stockid,uint256 _buyprice,uint256 _amount,uint256 _timestamp,uint256 _transactionid)public{
+        buyTransact.push(BuyTransaction(_stockid,_buyprice,_amount,_timestamp,_transactionid));
+    }   
+    function retriveCurrentDetails(address _stockid,uint256 _amount)public{
+        currentTransact.push(CurrentTransaction(_stockid,_amount));
+    }
 }
