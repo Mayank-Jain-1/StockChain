@@ -16,7 +16,7 @@ contract Stock{
     // uint public sellOrders = 0;
     // uint public buyOrders = 0;
     // string public companyName;
-    // uint public currentPrice;
+    uint public currentPrice = 1;
     address[] transactions;
     mapping(address => uint) public holderIndex;
     Holder[] public holders;
@@ -27,6 +27,7 @@ contract Stock{
     //     amount = _amount;
     //     currentPrice = _currentPrice;
     // }
+    event something(uint val);
 
     constructor(){
         contractAddress = address(this);
@@ -41,7 +42,7 @@ contract Stock{
 
     function pay(address _recepient) public payable {
         address payable conntractAddress = payable(_recepient);
-        conntractAddress.transfer(msg.value);
+        conntractAddress.transfer(1);
         
     }
 
@@ -49,8 +50,16 @@ contract Stock{
         return address(this).balance;
     }
 
-    function buyOrder(address _address) public {
+    function getValue() payable public returns(uint) {
+        return(msg.value);
+    }
 
+
+    function buyOrder(address _address) public payable  {
+        uint valueSent = msg.value/1000000000000000000;
+        emit something(valueSent);
+        require(valueSent == currentPrice);
+        payable(address(this)).send(currentPrice);
         Holder memory updatedHolder = Holder({
             trader_address: _address,
             amount: 1
@@ -65,11 +74,17 @@ contract Stock{
         }
     }
 
-    function sellOrder(address _address) public {
+    function sellOrder(address _address) public payable {
+        payable(msg.sender).transfer(currentPrice);
         uint index = holderIndex[_address];
         require(index != 0 && holders[index].amount > 0 );
         holders[index].amount -= 1;
     }
+
+    function checkSender() view public returns (address){
+        return msg.sender;
+    }
+
 
     function addTransaction(address _address) public {
         transactions.push(_address);
