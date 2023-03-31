@@ -12,7 +12,7 @@ contract Stock{
     address private owner;
     address public contractAddress;
     // uint public unsold_amount;
-    // uint public amount = 0;
+    uint public amount = 0;
     // uint public sellOrders = 0;
     // uint public buyOrders = 0;
     // string public companyName;
@@ -34,6 +34,7 @@ contract Stock{
             trader_address: 0x0000000000000000000000000000000000000000,
             amount: 0
         });
+        amount = 1;
         holders.push(emptyHolder);
     }
 
@@ -62,6 +63,12 @@ contract Stock{
             updatedHolder.amount = holders[holderIndex[_address]].amount + 1;
             holders[holderIndex[_address]] = updatedHolder;
         }
+    }
+
+    function sellOrder(address _address) public {
+        uint index = holderIndex[_address];
+        require(index != 0 && holders[index].amount > 0 );
+        holders[index].amount -= 1;
     }
 
     function addTransaction(address _address) public {
