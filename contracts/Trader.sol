@@ -35,8 +35,13 @@ contract Trader {
     CurrentTransaction[] public currentTransact;
 
     address public metamaskid;
-    string public name;
+    string public name; 
     
+    event printString(string val);
+
+    receive() payable external {
+        emit printString("Received the amount");
+    }
 
     function retriveSellDetails(address _stockid,uint256 _sellprice,uint256 _amount,uint256 _timestamp,uint256 _transactionid)public{
         sellTransact.push(SellTransaction(_stockid,_sellprice,_amount,_timestamp,_transactionid));
@@ -57,7 +62,9 @@ contract Trader {
     function buyOrder(address _contractAddress) external payable{
         Stock(_contractAddress).buyOrder{value: msg.value}();
     }
+
     function sellOrder(address _contractAddress) external payable{
         Stock(_contractAddress).sellOrder();
     }
+
 }
