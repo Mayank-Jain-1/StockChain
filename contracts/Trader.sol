@@ -2,6 +2,13 @@
 
 pragma solidity >=0.8.2 < 0.9.0;
 
+
+interface Stock{
+    function buyOrder() external payable;
+    function sellOrder() external payable;
+    function unsold_amount() view external returns(uint);
+}
+
 struct BuyTransaction {
         address stockid;
         uint256 buyprice;
@@ -38,7 +45,19 @@ contract Trader {
     function retriveBuyDetails(address _stockid,uint256 _buyprice,uint256 _amount,uint256 _timestamp,uint256 _transactionid)public{
         buyTransact.push(BuyTransaction(_stockid,_buyprice,_amount,_timestamp,_transactionid));
     }   
+
     function retriveCurrentDetails(address _stockid,uint256 _amount)public{
         currentTransact.push(CurrentTransaction(_stockid,_amount));
+    }
+
+    function unsold_amount(address _contractAddress) public view returns(uint){
+        return Stock(_contractAddress).unsold_amount();
+    }
+
+    function buyOrder(address _contractAddress) external payable{
+        Stock(_contractAddress).buyOrder{value: msg.value}();
+    }
+    function sellOrder(address _contractAddress) external payable{
+        Stock(_contractAddress).sellOrder();
     }
 }
