@@ -29,6 +29,15 @@ struct CurrentTransaction {
     }
 
 contract Trader {
+    address public owner;
+    modifier restricted() {
+        require(msg.sender == owner,"Owner Only");
+        _;
+    }
+
+    constructor() {
+        owner = msg.sender;
+    }
 
     SellTransaction[] public sellTransact;
     BuyTransaction[] public buyTransact;
@@ -59,12 +68,14 @@ contract Trader {
         return Stock(_contractAddress).unsold_amount();
     }
 
-    function buyOrder(address _contractAddress) external payable{
+    function buyOrder(address _contractAddress) external restricted payable{
         Stock(_contractAddress).buyOrder{value: msg.value}();
     }
 
-    function sellOrder(address _contractAddress) external payable{
+    function sellOrder(address _contractAddress) external restricted payable{
         Stock(_contractAddress).sellOrder();
     }
-
+    function withdraw() external restricted payable{
+        payable(owner).transfer(address(this).balance);
+    }
 }
