@@ -5,7 +5,6 @@ pragma solidity >=0.8.2 <0.9.0;
 
 struct Holder{
     address trader_address;
-    string trader_name;
     uint amount;
 }
 
@@ -33,8 +32,7 @@ contract Stock{
         contractAddress = address(this);
         Holder memory emptyHolder = Holder({
             trader_address: 0x0000000000000000000000000000000000000000,
-            trader_name: "mayank",
-            amount: 123
+            amount: 0
         });
         holders.push(emptyHolder);
     }
@@ -50,18 +48,18 @@ contract Stock{
         return address(this).balance;
     }
 
-    function buyOrder(address _address, string memory _name, uint _amount) public {
+    function buyOrder(address _address) public {
 
         Holder memory updatedHolder = Holder({
             trader_address: _address,
-            trader_name: _name,
-            amount: _amount
+            amount: 1
         });
 
         if(holderIndex[_address] == 0){
             holderIndex[_address] = holders.length;
             holders.push(updatedHolder);
         }else{
+            updatedHolder.amount = holders[holderIndex[_address]].amount + 1;
             holders[holderIndex[_address]] = updatedHolder;
         }
     }
