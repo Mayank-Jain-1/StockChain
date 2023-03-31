@@ -12,7 +12,7 @@ contract Stock{
     address private owner;
     address public contractAddress;
     uint public unsold_amount;
-    uint public amount = 0;
+    uint public amountInPublic;
     uint public sellOrders = 0;
     uint public buyOrders = 0;
     string public companyName;
@@ -34,11 +34,12 @@ contract Stock{
 
     constructor(){
         contractAddress = address(this);
+        unsold_amount = 600;
+        amountInPublic = 0;
         Holder memory emptyHolder = Holder({
             trader_address: 0x0000000000000000000000000000000000000000,
             amount: 0
         });
-        amount = 600;
         holders.push(emptyHolder);
     }
 
@@ -47,22 +48,22 @@ contract Stock{
     }
 
 
-    function pay(address _recepient) public payable {
-        address payable conntractAddress = payable(_recepient);
-        conntractAddress.transfer(1);
+    // function pay(address _recepient) public payable {
+    //     address payable conntractAddress = payable(_recepient);
+    //     conntractAddress.transfer(1);
         
-    }
+    // }
 
     function getBalance() public view returns(uint){
         return address(this).balance;
     }
 
-    function getValue() payable public returns(uint) {
-        return(msg.value);
-    }
+    // function getValue() payable public returns(uint) {
+    //     return(msg.value);
+    // }
 
 
-    function buyOrder() public payable  {
+    function buyOrder() external payable  {
         uint valueSent = msg.value/1000000000000000000;
         emit something(valueSent);
         require(valueSent == currentPrice);
@@ -71,6 +72,10 @@ contract Stock{
         emit printBool(sent);
         address _address = msg.sender;
         
+        if(unsold_amount > 0){
+            unsold_amount--;
+            amountInPublic++;
+        }
 
         if(holderIndex[_address] == 0){
             Holder memory updatedHolder = Holder({
@@ -84,7 +89,7 @@ contract Stock{
         }
     }
 
-    function sellOrder() public payable {
+    function sellOrder() external payable {
         address payable _address = payable(msg.sender);
         bool sent = _address.send(currentPrice*1 ether);
         require(sent, "Was not able to send the ethers, reverted");
