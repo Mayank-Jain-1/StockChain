@@ -30,6 +30,7 @@ struct CurrentTransaction {
 
 contract Trader {
     address public owner;
+    
     modifier restricted() {
         require(msg.sender == owner,"Owner Only");
         _;
