@@ -8,18 +8,19 @@ struct Holder {
 }
 
 contract Stock {
+    
     address private owner;
     address public contractAddress;
     uint public unsold_amount;
     uint public amountInPublic;
-    uint public sellOrders = 0;
-    uint public buyOrders = 0;
     string public companyName;
     uint public currentPrice = 1;
     address[] transactions;
     mapping(address => uint) public holderIndex;
     Holder[] public holders;
-    event something(uint val);
+
+
+    event printInt(uint val);
     event printBool(bool val);
     event printString(string val);
 
@@ -40,13 +41,9 @@ contract Stock {
         emit printString("Received the amount");
     }
 
-    function getBalance() public view returns (uint) {
-        return address(this).balance;
-    }
-
     function buyOrder() external payable {
         uint valueSent = msg.value / 1000000000000000000;
-        emit something(valueSent);
+        emit printInt(valueSent);
         require(valueSent == currentPrice);
         bool sent = payable(address(this)).send(currentPrice);
         require(sent, "Not able to receive payment ethers");
@@ -72,10 +69,10 @@ contract Stock {
 
     function sellOrder() external payable {
         address payable _address = payable(msg.sender);
-        bool sent = _address.send(currentPrice * 1 ether);
-        require(sent, "Was not able to send the ethers, reverted");
         uint index = holderIndex[_address];
         require(index != 0 && holders[index].amount > 0);
+        bool sent = _address.send(currentPrice * 1 ether);
+        require(sent, "Was not able to send the ethers, reverted");
         holders[index].amount -= 1;
     }
 }
