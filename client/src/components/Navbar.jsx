@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setWalletAddress } from "../actions";
 
 const Navbar = () => {
-   const [walletAddress, setWalletAddress] = useState("");
+   const dispatch = useDispatch();
+   const walletAddress = useSelector(store => store.walletAddress);
+   console.log('walletAddress: ', walletAddress);
    useEffect(() => {
       getCurrentwallet();
       addWalletListener();
@@ -16,7 +20,7 @@ const Navbar = () => {
             const accounts = await window.ethereum.request({
                method: "eth_requestAccounts",
             });
-            setWalletAddress(accounts[0]);
+            dispatch(setWalletAddress(accounts[0]));
             console.log(accounts[0]);
          } catch (err) {
             console.error(err.message);
@@ -35,7 +39,7 @@ const Navbar = () => {
                method: "eth_accounts",
             });
             if (accounts.length > 0) {
-               setWalletAddress(accounts[0]);
+               dispatch(setWalletAddress(accounts[0]));
                console.log(accounts[0]);
             } else {
                console.log("Connect to MetaMask Wallet");
@@ -53,11 +57,11 @@ const Navbar = () => {
          typeof window.ethereum != "undefined"
       ) {
          window.ethereum.on("accountsChanged", (accounts) => {
-            setWalletAddress(accounts[0]);
+            dispatch(setWalletAddress(accounts[0]));
             console.log(accounts[0]);
          });
       } else {
-         setWalletAddress("");
+         dispatch(setWalletAddress(''));
          console.log("Install Metamask");
       }
    };
