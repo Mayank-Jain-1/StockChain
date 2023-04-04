@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Stock from "../abis/Stock.json";
 import web3 from "../connections";
+import axios from 'axios'
+import Navbar from "../components/Navbar/Navbar";
 
 const Deploy = () => {
    const [accounts, setAccounts] = useState([]);
@@ -41,6 +43,8 @@ const Deploy = () => {
          .on("receipt", (receipt) => {
             console.log("contract Address: ", receipt.contractAddress);
             setMessage("Contract Deplpyed at "+ receipt.contractAddress);
+            axios.post('/');
+
 
 
             //   setDeployedContracts([
@@ -60,8 +64,9 @@ const Deploy = () => {
    }, []);
 
    return (
-      <div className="bg-red-200 h-screen">
-         <div className="flex flex-col max-w-lg mx-auto space-y-4 py-3 p-3">
+      <div className="">
+            <Navbar />
+         <div className="bg-green-200 flex flex-col mx-auto space-y-4 py-3 p-3">
             <h1 className="text-4xl text-center">Deploy a new Stock</h1>
 
             <input
@@ -94,6 +99,9 @@ const Deploy = () => {
          className="text-white bg-blue-600 p-2 rounded-lg"
          >Deploy</button>
          <p>{message}</p>
+         {accounts.map((address,index) => {
+           return <p key={index}>{address}</p>
+         })}
          </div>
 
       </div>

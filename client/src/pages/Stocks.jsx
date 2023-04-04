@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import web3 from "../connections";
 import Stock from "../abis/Stock.json";
+import axios from "axios";
 
 const Stocks = () => {
    const [accounts, setAccounts] = useState([]);
+   console.log("accounts: ", accounts);
    const [deployedContracts, setDeployedContracts] = useState([]);
    useEffect(() => {
       getAccounts();
@@ -22,8 +24,14 @@ const Stocks = () => {
       const bytecode = Stock.bytecode;
       const contract = new web3.eth.Contract(ABI);
       const contractDeployed = await contract
-         .deploy({ data: bytecode })
-         .send({ from: mainAccount, gas: 1000000 })
+         .deploy({ 
+            data: bytecode,
+            arguments: ['tempName',600,1],
+          })
+         .send({
+            from: mainAccount,
+            gas: 1000000,
+         })
          .on("receipt", (receipt) => {
             console.log("contract Address: ", receipt.contractAddress);
             setDeployedContracts([
@@ -64,7 +72,7 @@ const Stocks = () => {
       const StockContract = new web3.eth.Contract(Stock.abi, address);
       StockContract.methods
          .sellOrder()
-         .send({from: accounts[0]})
+         .send({ from: accounts[0] })
          .then((res) => setResult("Sold successfuly"));
    };
 
@@ -73,34 +81,34 @@ const Stocks = () => {
          {/* {accounts.map((account, index) => {
             return <h5 key={index}>{account}</h5>;
          })} */}
-         <button className="px-2" onClick={() => deployStock()}>
+         <button className="p-2 m-2 bg-blue-300 text-white rounded-md" onClick={() => deployStock()}>
             Deploy
          </button>
          <h1>{result}</h1>
          <br />
          <br />
          <br />
-     
+
          {deployedContracts.map((contractAddress, index) => {
             return (
-               <div className="flex bg-blue-300 text-blue-300">
+               <div className="flex">
                   <h5 key={index}>{contractAddress}</h5>
                   <button
-                     className="px-2"
+                     className="p-2 m-2 bg-blue-300 text-white rounded-md"
                      onClick={() => getPrice(contractAddress)}
                   >
                      {" "}
-                     Check Address{" "}
+                     Check Price{" "}
                   </button>
                   <button
-                     className="px-2"
+                     className="p-2 m-2 bg-green-500 text-white rounded-md"
                      onClick={() => buyOrder(contractAddress)}
                   >
                      {" "}
                      buyOrder{" "}
                   </button>
                   <button
-                     className="px-2"
+                     className="p-2 m-2 bg-red-600 text-white rounded-md"
                      onClick={() => sellOrder(contractAddress)}
                   >
                      {" "}
