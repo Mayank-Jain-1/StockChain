@@ -2,7 +2,7 @@ import React from "react";
 import Home from "./pages/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Stocks from "./pages/Stocks";
-import Deploy from "./pages/deploy";
+import Deploy from "./pages/Deploy";
 import MarketPlace from "./pages/MarketPlace";
 
 const App = () => {
