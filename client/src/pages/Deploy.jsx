@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Stock from "../abis/Stock.json";
 import web3 from "../connections";
 import axios from 'axios'
-import Navbar from "../components/Navbar/Navbar";
+import Whitelist from '../abis/Whitelist.json'
 
 const Deploy = () => {
    const [accounts, setAccounts] = useState([]);
@@ -15,7 +15,12 @@ const Deploy = () => {
       setDeployParams({ ...deployParams, [e.target.name]: e.target.value });
    };
 
+   const whitelistContract = new web3.eth.Contract(Whitelist.abi);
+
    const [message, setMessage] = useState('');
+
+   const checkStock = () => {
+   }
 
    const deployStock = async () => {
       if (
@@ -65,8 +70,7 @@ const Deploy = () => {
 
    return (
       <div className="">
-            <Navbar />
-         <div className="bg-green-200 flex flex-col mx-auto space-y-4 py-3 p-3">
+         <div className="flex flex-col mx-auto space-y-4 py-3 p-3">
             <h1 className="text-4xl text-center">Deploy a new Stock</h1>
 
             <input
@@ -75,7 +79,7 @@ const Deploy = () => {
                onChange={(e) => handleChange(e)}
                value={deployParams.companyName}
                placeholder="CompanyName"
-               className="p-3 rounded-md"
+               className="p-3 border-2 border-black  rounded-md"
             />
             <input
                type="number"
@@ -83,7 +87,7 @@ const Deploy = () => {
                value={deployParams.amount}
                onChange={(e) => handleChange(e)}
                placeholder="Amount"
-               className="p-3 rounded-md"
+               className="p-3 border-2 border-black  rounded-md"
             />
             <input
                type="number"
@@ -91,7 +95,7 @@ const Deploy = () => {
                value={deployParams.initialPrice}
                onChange={(e) => handleChange(e)}
                placeholder="Initial Price"
-               className="p-3 rounded-md"
+               className="p-3 border-2 border-black  rounded-md"
             />
 
          <button

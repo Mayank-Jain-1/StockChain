@@ -6,10 +6,11 @@ import Deploy from "./pages/deploy";
 import MarketPlace from "./pages/MarketPlace";
 import web3 from "./connections";
 import Whitelist from "./abis/Whitelist.json";
+import Navbar from "./components/Navbar";
 const App = () => {
 	
   	const [account, setAccount] = useState(['0x8661cd3bd7fddd4f66385238f8e49f2fbac6701d5c0083baa5290e87c849f73f',
-	
+
 ]);
    // const deployStock = async () => {
    //    if (
@@ -63,8 +64,9 @@ const App = () => {
 
    return (
       <BrowserRouter>
+			<Navbar />
          <Routes>
-            <Route path="/marketPlace/:name" element={<MarketPlace />} />
+            <Route path="/" element={<MarketPlace />} />
             <Route path="/home" element={<Home />} />
             <Route path="/deploy" element={<Deploy />} />
             <Route path="/stocks" element={<Stocks />} />

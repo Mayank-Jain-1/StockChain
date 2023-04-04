@@ -52,6 +52,15 @@ contract Whitelist{
         }));
     }
 
+    function checkStock(string memory _name) view public returns(bool){
+        if(stocksIndex[_name] != 0){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     function getStockAddress(string memory _name) view public returns(address){
         require(stocksIndex[_name] != 0, "Not found");
         return stocks[stocksIndex[_name]].stockAddress;

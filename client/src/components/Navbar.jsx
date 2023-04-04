@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-//import "./App.css";
-const MarketPlace = () => {
+import React, { useEffect, useState } from "react";
+
+const Navbar = () => {
    const [walletAddress, setWalletAddress] = useState("");
    useEffect(() => {
       getCurrentwallet();
@@ -61,11 +61,18 @@ const MarketPlace = () => {
          console.log("Install Metamask");
       }
    };
-
-   return (
-      <div>
-
-      </div>
-   );
+   return <div
+   className="bg-black flex justify-between px-5 py-3 items-center">
+    <h1 className="text-3xl text-white font-serif">StockChain</h1>
+    <button className="border-2 border-white p-3 rounded-lg text-primary" type="button" onClick={connectwallet}>
+            {walletAddress && walletAddress.length > 0
+               ? `Connected: ${walletAddress.substring(
+                    0,
+                    6
+                 )}...${walletAddress.substring(38)}`
+               : "Connect Wallet"}
+         </button>
+   </div>;
 };
-export default MarketPlace;
+
+export default Navbar;
