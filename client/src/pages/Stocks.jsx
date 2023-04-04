@@ -80,6 +80,7 @@ const Stocks = () => {
          <br />
          <br />
          <br />
+     
          {deployedContracts.map((contractAddress, index) => {
             return (
                <div className="flex bg-blue-300 text-blue-300">
