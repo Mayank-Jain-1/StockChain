@@ -7,8 +7,13 @@ import MarketPlace from "./pages/MarketPlace";
 import web3 from "./connections";
 import Whitelist from "./abis/Whitelist.json";
 import Navbar from "./components/Navbar";
+import { useDispatch, useSelector } from "react-redux";
+import { setWhitelistAddress } from "./actions/index";
 const App = () => {
-	
+
+	const dispatch = useDispatch();
+	const whiteListAddress = useSelector(store=> store.whiteListAddress);
+	console.log('whiteListAddress: ', whiteListAddress);
   	const [account, setAccount] = useState(['0x8661cd3bd7fddd4f66385238f8e49f2fbac6701d5c0083baa5290e87c849f73f',
 
 ]);
@@ -54,13 +59,13 @@ const App = () => {
 		 })
          .on("receipt", (receipt) => {
 				console.log(receipt.contractAddress);
-				
+			 dispatch(setWhitelistAddress(receipt.contractAddress));
 			});
    };
 
    useEffect(() => {
 		deployWhitelist();
-	});
+	}, []);
 
    return (
       <BrowserRouter>

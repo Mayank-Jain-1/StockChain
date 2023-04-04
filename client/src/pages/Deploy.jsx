@@ -20,6 +20,9 @@ const Deploy = () => {
    const [message, setMessage] = useState('');
 
    const checkStock = () => {
+      whitelistContract.deploy({
+         data: Whitelist.bytecode
+      }).send()
    }
 
    const deployStock = async () => {
