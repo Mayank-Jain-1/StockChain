@@ -10431,21 +10431,21 @@
     "absolutePath": "project:/contracts/Whitelist.sol",
     "exportedSymbols": {
       "Stock": [
-        479
+        480
       ],
       "Trader": [
-        484
+        485
       ],
       "Whitelist": [
-        674
+        675
       ]
     },
-    "id": 675,
+    "id": 676,
     "license": "GPL-3.0",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 474,
+        "id": 475,
         "literals": [
           "solidity",
           ">=",
@@ -10460,16 +10460,16 @@
       },
       {
         "canonicalName": "Stock",
-        "id": 479,
+        "id": 480,
         "members": [
           {
             "constant": false,
-            "id": 476,
+            "id": 477,
             "mutability": "mutable",
             "name": "name",
             "nameLocation": "115:4:2",
             "nodeType": "VariableDeclaration",
-            "scope": 479,
+            "scope": 480,
             "src": "108:11:2",
             "stateVariable": false,
             "storageLocation": "default",
@@ -10478,7 +10478,7 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 475,
+              "id": 476,
               "name": "string",
               "nodeType": "ElementaryTypeName",
               "src": "108:6:2",
@@ -10491,12 +10491,12 @@
           },
           {
             "constant": false,
-            "id": 478,
+            "id": 479,
             "mutability": "mutable",
             "name": "stockAddress",
             "nameLocation": "134:12:2",
             "nodeType": "VariableDeclaration",
-            "scope": 479,
+            "scope": 480,
             "src": "126:20:2",
             "stateVariable": false,
             "storageLocation": "default",
@@ -10505,7 +10505,7 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 477,
+              "id": 478,
               "name": "address",
               "nodeType": "ElementaryTypeName",
               "src": "126:7:2",
@@ -10521,22 +10521,22 @@
         "name": "Stock",
         "nameLocation": "96:5:2",
         "nodeType": "StructDefinition",
-        "scope": 675,
+        "scope": 676,
         "src": "89:61:2",
         "visibility": "public"
       },
       {
         "canonicalName": "Trader",
-        "id": 484,
+        "id": 485,
         "members": [
           {
             "constant": false,
-            "id": 481,
+            "id": 482,
             "mutability": "mutable",
             "name": "name",
             "nameLocation": "181:4:2",
             "nodeType": "VariableDeclaration",
-            "scope": 484,
+            "scope": 485,
             "src": "174:11:2",
             "stateVariable": false,
             "storageLocation": "default",
@@ -10545,7 +10545,7 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 480,
+              "id": 481,
               "name": "string",
               "nodeType": "ElementaryTypeName",
               "src": "174:6:2",
@@ -10558,12 +10558,12 @@
           },
           {
             "constant": false,
-            "id": 483,
+            "id": 484,
             "mutability": "mutable",
             "name": "traderAddress",
             "nameLocation": "200:13:2",
             "nodeType": "VariableDeclaration",
-            "scope": 484,
+            "scope": 485,
             "src": "192:21:2",
             "stateVariable": false,
             "storageLocation": "default",
@@ -10572,7 +10572,7 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 482,
+              "id": 483,
               "name": "address",
               "nodeType": "ElementaryTypeName",
               "src": "192:7:2",
@@ -10588,7 +10588,7 @@
         "name": "Trader",
         "nameLocation": "161:6:2",
         "nodeType": "StructDefinition",
-        "scope": 675,
+        "scope": 676,
         "src": "154:63:2",
         "visibility": "public"
       },
@@ -10599,9 +10599,9 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 674,
+        "id": 675,
         "linearizedBaseContracts": [
-          674
+          675
         ],
         "name": "Whitelist",
         "nameLocation": "230:9:2",
@@ -10609,12 +10609,12 @@
         "nodes": [
           {
             "constant": false,
-            "id": 486,
+            "id": 487,
             "mutability": "mutable",
             "name": "owner",
             "nameLocation": "254:5:2",
             "nodeType": "VariableDeclaration",
-            "scope": 674,
+            "scope": 675,
             "src": "246:13:2",
             "stateVariable": true,
             "storageLocation": "default",
@@ -10623,7 +10623,7 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 485,
+              "id": 486,
               "name": "address",
               "nodeType": "ElementaryTypeName",
               "src": "246:7:2",
@@ -10637,45 +10637,45 @@
           },
           {
             "constant": false,
-            "id": 490,
+            "id": 491,
             "mutability": "mutable",
             "name": "traders",
             "nameLocation": "275:7:2",
             "nodeType": "VariableDeclaration",
-            "scope": 674,
+            "scope": 675,
             "src": "266:16:2",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_array$_t_struct$_Trader_$484_storage_$dyn_storage",
+              "typeIdentifier": "t_array$_t_struct$_Trader_$485_storage_$dyn_storage",
               "typeString": "struct Trader[]"
             },
             "typeName": {
               "baseType": {
-                "id": 488,
+                "id": 489,
                 "nodeType": "UserDefinedTypeName",
                 "pathNode": {
-                  "id": 487,
+                  "id": 488,
                   "name": "Trader",
                   "nameLocations": [
                     "266:6:2"
                   ],
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 484,
+                  "referencedDeclaration": 485,
                   "src": "266:6:2"
                 },
-                "referencedDeclaration": 484,
+                "referencedDeclaration": 485,
                 "src": "266:6:2",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Trader_$484_storage_ptr",
+                  "typeIdentifier": "t_struct$_Trader_$485_storage_ptr",
                   "typeString": "struct Trader"
                 }
               },
-              "id": 489,
+              "id": 490,
               "nodeType": "ArrayTypeName",
               "src": "266:8:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_array$_t_struct$_Trader_$484_storage_$dyn_storage_ptr",
+                "typeIdentifier": "t_array$_t_struct$_Trader_$485_storage_$dyn_storage_ptr",
                 "typeString": "struct Trader[]"
               }
             },
@@ -10683,12 +10683,12 @@
           },
           {
             "constant": false,
-            "id": 494,
+            "id": 495,
             "mutability": "mutable",
             "name": "traderIndex",
             "nameLocation": "314:11:2",
             "nodeType": "VariableDeclaration",
-            "scope": 674,
+            "scope": 675,
             "src": "289:36:2",
             "stateVariable": true,
             "storageLocation": "default",
@@ -10697,11 +10697,11 @@
               "typeString": "mapping(address => uint256)"
             },
             "typeName": {
-              "id": 493,
+              "id": 494,
               "keyName": "",
               "keyNameLocation": "-1:-1:-1",
               "keyType": {
-                "id": 491,
+                "id": 492,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "297:7:2",
@@ -10719,7 +10719,7 @@
               "valueName": "",
               "valueNameLocation": "-1:-1:-1",
               "valueType": {
-                "id": 492,
+                "id": 493,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "308:4:2",
@@ -10733,45 +10733,45 @@
           },
           {
             "constant": false,
-            "id": 498,
+            "id": 499,
             "mutability": "mutable",
             "name": "stocks",
             "nameLocation": "340:6:2",
             "nodeType": "VariableDeclaration",
-            "scope": 674,
+            "scope": 675,
             "src": "332:14:2",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_array$_t_struct$_Stock_$479_storage_$dyn_storage",
+              "typeIdentifier": "t_array$_t_struct$_Stock_$480_storage_$dyn_storage",
               "typeString": "struct Stock[]"
             },
             "typeName": {
               "baseType": {
-                "id": 496,
+                "id": 497,
                 "nodeType": "UserDefinedTypeName",
                 "pathNode": {
-                  "id": 495,
+                  "id": 496,
                   "name": "Stock",
                   "nameLocations": [
                     "332:5:2"
                   ],
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 479,
+                  "referencedDeclaration": 480,
                   "src": "332:5:2"
                 },
-                "referencedDeclaration": 479,
+                "referencedDeclaration": 480,
                 "src": "332:5:2",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Stock_$479_storage_ptr",
+                  "typeIdentifier": "t_struct$_Stock_$480_storage_ptr",
                   "typeString": "struct Stock"
                 }
               },
-              "id": 497,
+              "id": 498,
               "nodeType": "ArrayTypeName",
               "src": "332:7:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_array$_t_struct$_Stock_$479_storage_$dyn_storage_ptr",
+                "typeIdentifier": "t_array$_t_struct$_Stock_$480_storage_$dyn_storage_ptr",
                 "typeString": "struct Stock[]"
               }
             },
@@ -10779,12 +10779,12 @@
           },
           {
             "constant": false,
-            "id": 502,
+            "id": 503,
             "mutability": "mutable",
             "name": "stocksIndex",
             "nameLocation": "377:11:2",
             "nodeType": "VariableDeclaration",
-            "scope": 674,
+            "scope": 675,
             "src": "353:35:2",
             "stateVariable": true,
             "storageLocation": "default",
@@ -10793,11 +10793,11 @@
               "typeString": "mapping(string => uint256)"
             },
             "typeName": {
-              "id": 501,
+              "id": 502,
               "keyName": "",
               "keyNameLocation": "-1:-1:-1",
               "keyType": {
-                "id": 499,
+                "id": 500,
                 "name": "string",
                 "nodeType": "ElementaryTypeName",
                 "src": "361:6:2",
@@ -10815,7 +10815,7 @@
               "valueName": "",
               "valueNameLocation": "-1:-1:-1",
               "valueType": {
-                "id": 500,
+                "id": 501,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "371:4:2",
@@ -10829,23 +10829,23 @@
           },
           {
             "body": {
-              "id": 528,
+              "id": 529,
               "nodeType": "Block",
               "src": "410:321:2",
               "statements": [
                 {
                   "expression": {
-                    "id": 508,
+                    "id": 509,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 505,
+                      "id": 506,
                       "name": "owner",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 486,
+                      "referencedDeclaration": 487,
                       "src": "421:5:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -10856,7 +10856,7 @@
                     "operator": "=",
                     "rightHandSide": {
                       "expression": {
-                        "id": 506,
+                        "id": 507,
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
@@ -10867,7 +10867,7 @@
                           "typeString": "msg"
                         }
                       },
-                      "id": 507,
+                      "id": 508,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -10887,7 +10887,7 @@
                       "typeString": "address"
                     }
                   },
-                  "id": 509,
+                  "id": 510,
                   "nodeType": "ExpressionStatement",
                   "src": "421:18:2"
                 },
@@ -10898,7 +10898,7 @@
                         "arguments": [
                           {
                             "hexValue": "6f776e6572",
-                            "id": 514,
+                            "id": 515,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
@@ -10914,7 +10914,7 @@
                           },
                           {
                             "hexValue": "307830303030303030303030303030303030303030303030303030303030303030303030303030303030",
-                            "id": 515,
+                            "id": 516,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
@@ -10940,18 +10940,18 @@
                               "typeString": "address"
                             }
                           ],
-                          "id": 513,
+                          "id": 514,
                           "name": "Trader",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 484,
+                          "referencedDeclaration": 485,
                           "src": "463:6:2",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_struct$_Trader_$484_storage_ptr_$",
+                            "typeIdentifier": "t_type$_t_struct$_Trader_$485_storage_ptr_$",
                             "typeString": "type(struct Trader storage pointer)"
                           }
                         },
-                        "id": 516,
+                        "id": 517,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -10969,7 +10969,7 @@
                         "src": "463:119:2",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Trader_$484_memory_ptr",
+                          "typeIdentifier": "t_struct$_Trader_$485_memory_ptr",
                           "typeString": "struct Trader memory"
                         }
                       }
@@ -10977,23 +10977,23 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_struct$_Trader_$484_memory_ptr",
+                          "typeIdentifier": "t_struct$_Trader_$485_memory_ptr",
                           "typeString": "struct Trader memory"
                         }
                       ],
                       "expression": {
-                        "id": 510,
+                        "id": 511,
                         "name": "traders",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 490,
+                        "referencedDeclaration": 491,
                         "src": "450:7:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_Trader_$484_storage_$dyn_storage",
+                          "typeIdentifier": "t_array$_t_struct$_Trader_$485_storage_$dyn_storage",
                           "typeString": "struct Trader storage ref[] storage ref"
                         }
                       },
-                      "id": 512,
+                      "id": 513,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -11003,11 +11003,11 @@
                       "nodeType": "MemberAccess",
                       "src": "450:12:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_array$_t_struct$_Trader_$484_storage_$dyn_storage_ptr_$_t_struct$_Trader_$484_storage_$returns$__$attached_to$_t_array$_t_struct$_Trader_$484_storage_$dyn_storage_ptr_$",
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_array$_t_struct$_Trader_$485_storage_$dyn_storage_ptr_$_t_struct$_Trader_$485_storage_$returns$__$attached_to$_t_array$_t_struct$_Trader_$485_storage_$dyn_storage_ptr_$",
                         "typeString": "function (struct Trader storage ref[] storage pointer,struct Trader storage ref)"
                       }
                     },
-                    "id": 517,
+                    "id": 518,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -11023,7 +11023,7 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 518,
+                  "id": 519,
                   "nodeType": "ExpressionStatement",
                   "src": "450:133:2"
                 },
@@ -11034,7 +11034,7 @@
                         "arguments": [
                           {
                             "hexValue": "6a756e6b",
-                            "id": 523,
+                            "id": 524,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
@@ -11050,7 +11050,7 @@
                           },
                           {
                             "hexValue": "307830303030303030303030303030303030303030303030303030303030303030303030303030303030",
-                            "id": 524,
+                            "id": 525,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
@@ -11076,18 +11076,18 @@
                               "typeString": "address"
                             }
                           ],
-                          "id": 522,
+                          "id": 523,
                           "name": "Stock",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 479,
+                          "referencedDeclaration": 480,
                           "src": "606:5:2",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_struct$_Stock_$479_storage_ptr_$",
+                            "typeIdentifier": "t_type$_t_struct$_Stock_$480_storage_ptr_$",
                             "typeString": "type(struct Stock storage pointer)"
                           }
                         },
-                        "id": 525,
+                        "id": 526,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -11105,7 +11105,7 @@
                         "src": "606:116:2",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Stock_$479_memory_ptr",
+                          "typeIdentifier": "t_struct$_Stock_$480_memory_ptr",
                           "typeString": "struct Stock memory"
                         }
                       }
@@ -11113,23 +11113,23 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_struct$_Stock_$479_memory_ptr",
+                          "typeIdentifier": "t_struct$_Stock_$480_memory_ptr",
                           "typeString": "struct Stock memory"
                         }
                       ],
                       "expression": {
-                        "id": 519,
+                        "id": 520,
                         "name": "stocks",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 498,
+                        "referencedDeclaration": 499,
                         "src": "594:6:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_Stock_$479_storage_$dyn_storage",
+                          "typeIdentifier": "t_array$_t_struct$_Stock_$480_storage_$dyn_storage",
                           "typeString": "struct Stock storage ref[] storage ref"
                         }
                       },
-                      "id": 521,
+                      "id": 522,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -11139,11 +11139,11 @@
                       "nodeType": "MemberAccess",
                       "src": "594:11:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_array$_t_struct$_Stock_$479_storage_$dyn_storage_ptr_$_t_struct$_Stock_$479_storage_$returns$__$attached_to$_t_array$_t_struct$_Stock_$479_storage_$dyn_storage_ptr_$",
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_array$_t_struct$_Stock_$480_storage_$dyn_storage_ptr_$_t_struct$_Stock_$480_storage_$returns$__$attached_to$_t_array$_t_struct$_Stock_$480_storage_$dyn_storage_ptr_$",
                         "typeString": "function (struct Stock storage ref[] storage pointer,struct Stock storage ref)"
                       }
                     },
-                    "id": 526,
+                    "id": 527,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -11159,13 +11159,13 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 527,
+                  "id": 528,
                   "nodeType": "ExpressionStatement",
                   "src": "594:129:2"
                 }
               ]
             },
-            "id": 529,
+            "id": 530,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
@@ -11173,18 +11173,18 @@
             "nameLocation": "-1:-1:-1",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 503,
+              "id": 504,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "408:2:2"
             },
             "returnParameters": {
-              "id": 504,
+              "id": 505,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "410:0:2"
             },
-            "scope": 674,
+            "scope": 675,
             "src": "397:334:2",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -11192,7 +11192,7 @@
           },
           {
             "body": {
-              "id": 539,
+              "id": 540,
               "nodeType": "Block",
               "src": "758:55:2",
               "statements": [
@@ -11204,14 +11204,14 @@
                           "typeIdentifier": "t_address",
                           "typeString": "address"
                         },
-                        "id": 535,
+                        "id": 536,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "expression": {
-                            "id": 532,
+                            "id": 533,
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
@@ -11222,7 +11222,7 @@
                               "typeString": "msg"
                             }
                           },
-                          "id": 533,
+                          "id": 534,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -11239,11 +11239,11 @@
                         "nodeType": "BinaryOperation",
                         "operator": "==",
                         "rightExpression": {
-                          "id": 534,
+                          "id": 535,
                           "name": "owner",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 486,
+                          "referencedDeclaration": 487,
                           "src": "789:5:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
@@ -11264,7 +11264,7 @@
                           "typeString": "bool"
                         }
                       ],
-                      "id": 531,
+                      "id": 532,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -11278,7 +11278,7 @@
                         "typeString": "function (bool) pure"
                       }
                     },
-                    "id": 536,
+                    "id": 537,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -11294,23 +11294,23 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 537,
+                  "id": 538,
                   "nodeType": "ExpressionStatement",
                   "src": "767:28:2"
                 },
                 {
-                  "id": 538,
+                  "id": 539,
                   "nodeType": "PlaceholderStatement",
                   "src": "804:1:2"
                 }
               ]
             },
-            "id": 540,
+            "id": 541,
             "name": "onlyOwner",
             "nameLocation": "748:9:2",
             "nodeType": "ModifierDefinition",
             "parameters": {
-              "id": 530,
+              "id": 531,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "758:0:2"
@@ -11321,7 +11321,7 @@
           },
           {
             "body": {
-              "id": 558,
+              "id": 559,
               "nodeType": "Block",
               "src": "886:109:2",
               "statements": [
@@ -11331,31 +11331,31 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 551,
+                    "id": 552,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "baseExpression": {
-                        "id": 547,
+                        "id": 548,
                         "name": "traderIndex",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 494,
+                        "referencedDeclaration": 495,
                         "src": "900:11:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                           "typeString": "mapping(address => uint256)"
                         }
                       },
-                      "id": 549,
+                      "id": 550,
                       "indexExpression": {
-                        "id": 548,
+                        "id": 549,
                         "name": "_address",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 542,
+                        "referencedDeclaration": 543,
                         "src": "912:8:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -11377,7 +11377,7 @@
                     "operator": "==",
                     "rightExpression": {
                       "hexValue": "30",
-                      "id": 550,
+                      "id": 551,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -11397,18 +11397,18 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 555,
+                  "id": 556,
                   "nodeType": "IfStatement",
                   "src": "897:69:2",
                   "trueBody": {
-                    "id": 554,
+                    "id": 555,
                     "nodeType": "Block",
                     "src": "927:39:2",
                     "statements": [
                       {
                         "expression": {
                           "hexValue": "66616c7365",
-                          "id": 552,
+                          "id": 553,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -11422,8 +11422,8 @@
                           },
                           "value": "false"
                         },
-                        "functionReturnParameters": 546,
-                        "id": 553,
+                        "functionReturnParameters": 547,
+                        "id": 554,
                         "nodeType": "Return",
                         "src": "942:12:2"
                       }
@@ -11433,7 +11433,7 @@
                 {
                   "expression": {
                     "hexValue": "74727565",
-                    "id": 556,
+                    "id": 557,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -11447,15 +11447,15 @@
                     },
                     "value": "true"
                   },
-                  "functionReturnParameters": 546,
-                  "id": 557,
+                  "functionReturnParameters": 547,
+                  "id": 558,
                   "nodeType": "Return",
                   "src": "976:11:2"
                 }
               ]
             },
             "functionSelector": "50b95634",
-            "id": 559,
+            "id": 560,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -11463,17 +11463,17 @@
             "nameLocation": "830:12:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 543,
+              "id": 544,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 542,
+                  "id": 543,
                   "mutability": "mutable",
                   "name": "_address",
                   "nameLocation": "851:8:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 559,
+                  "scope": 560,
                   "src": "843:16:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -11482,7 +11482,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 541,
+                    "id": 542,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "843:7:2",
@@ -11498,17 +11498,17 @@
               "src": "842:18:2"
             },
             "returnParameters": {
-              "id": 546,
+              "id": 547,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 545,
+                  "id": 546,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 559,
+                  "scope": 560,
                   "src": "881:4:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -11517,7 +11517,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 544,
+                    "id": 545,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "881:4:2",
@@ -11531,7 +11531,7 @@
               ],
               "src": "880:6:2"
             },
-            "scope": 674,
+            "scope": 675,
             "src": "821:174:2",
             "stateMutability": "view",
             "virtual": false,
@@ -11539,7 +11539,7 @@
           },
           {
             "body": {
-              "id": 593,
+              "id": 594,
               "nodeType": "Block",
               "src": "1077:236:2",
               "statements": [
@@ -11551,31 +11551,31 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 573,
+                        "id": 574,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "baseExpression": {
-                            "id": 569,
+                            "id": 570,
                             "name": "traderIndex",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 494,
+                            "referencedDeclaration": 495,
                             "src": "1096:11:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                               "typeString": "mapping(address => uint256)"
                             }
                           },
-                          "id": 571,
+                          "id": 572,
                           "indexExpression": {
-                            "id": 570,
+                            "id": 571,
                             "name": "_address",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 563,
+                            "referencedDeclaration": 564,
                             "src": "1108:8:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -11597,7 +11597,7 @@
                         "operator": "==",
                         "rightExpression": {
                           "hexValue": "30",
-                          "id": 572,
+                          "id": 573,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -11619,7 +11619,7 @@
                       },
                       {
                         "hexValue": "54726164657220616c726561647920457869737473",
-                        "id": 574,
+                        "id": 575,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -11645,7 +11645,7 @@
                           "typeString": "literal_string \"Trader already Exists\""
                         }
                       ],
-                      "id": 568,
+                      "id": 569,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -11659,7 +11659,7 @@
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 575,
+                    "id": 576,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -11675,37 +11675,37 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 576,
+                  "id": 577,
                   "nodeType": "ExpressionStatement",
                   "src": "1088:60:2"
                 },
                 {
                   "expression": {
-                    "id": 582,
+                    "id": 583,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "baseExpression": {
-                        "id": 577,
+                        "id": 578,
                         "name": "traderIndex",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 494,
+                        "referencedDeclaration": 495,
                         "src": "1159:11:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                           "typeString": "mapping(address => uint256)"
                         }
                       },
-                      "id": 579,
+                      "id": 580,
                       "indexExpression": {
-                        "id": 578,
+                        "id": 579,
                         "name": "_address",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 563,
+                        "referencedDeclaration": 564,
                         "src": "1171:8:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -11727,18 +11727,18 @@
                     "operator": "=",
                     "rightHandSide": {
                       "expression": {
-                        "id": 580,
+                        "id": 581,
                         "name": "traders",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 490,
+                        "referencedDeclaration": 491,
                         "src": "1183:7:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_Trader_$484_storage_$dyn_storage",
+                          "typeIdentifier": "t_array$_t_struct$_Trader_$485_storage_$dyn_storage",
                           "typeString": "struct Trader storage ref[] storage ref"
                         }
                       },
-                      "id": 581,
+                      "id": 582,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -11758,7 +11758,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 583,
+                  "id": 584,
                   "nodeType": "ExpressionStatement",
                   "src": "1159:38:2"
                 },
@@ -11768,11 +11768,11 @@
                       {
                         "arguments": [
                           {
-                            "id": 588,
+                            "id": 589,
                             "name": "_name",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 561,
+                            "referencedDeclaration": 562,
                             "src": "1249:5:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_string_memory_ptr",
@@ -11780,11 +11780,11 @@
                             }
                           },
                           {
-                            "id": 589,
+                            "id": 590,
                             "name": "_address",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 563,
+                            "referencedDeclaration": 564,
                             "src": "1284:8:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -11803,18 +11803,18 @@
                               "typeString": "address"
                             }
                           ],
-                          "id": 587,
+                          "id": 588,
                           "name": "Trader",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 484,
+                          "referencedDeclaration": 485,
                           "src": "1221:6:2",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_struct$_Trader_$484_storage_ptr_$",
+                            "typeIdentifier": "t_type$_t_struct$_Trader_$485_storage_ptr_$",
                             "typeString": "type(struct Trader storage pointer)"
                           }
                         },
-                        "id": 590,
+                        "id": 591,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -11832,7 +11832,7 @@
                         "src": "1221:83:2",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Trader_$484_memory_ptr",
+                          "typeIdentifier": "t_struct$_Trader_$485_memory_ptr",
                           "typeString": "struct Trader memory"
                         }
                       }
@@ -11840,23 +11840,23 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_struct$_Trader_$484_memory_ptr",
+                          "typeIdentifier": "t_struct$_Trader_$485_memory_ptr",
                           "typeString": "struct Trader memory"
                         }
                       ],
                       "expression": {
-                        "id": 584,
+                        "id": 585,
                         "name": "traders",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 490,
+                        "referencedDeclaration": 491,
                         "src": "1208:7:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_Trader_$484_storage_$dyn_storage",
+                          "typeIdentifier": "t_array$_t_struct$_Trader_$485_storage_$dyn_storage",
                           "typeString": "struct Trader storage ref[] storage ref"
                         }
                       },
-                      "id": 586,
+                      "id": 587,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -11866,11 +11866,11 @@
                       "nodeType": "MemberAccess",
                       "src": "1208:12:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_array$_t_struct$_Trader_$484_storage_$dyn_storage_ptr_$_t_struct$_Trader_$484_storage_$returns$__$attached_to$_t_array$_t_struct$_Trader_$484_storage_$dyn_storage_ptr_$",
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_array$_t_struct$_Trader_$485_storage_$dyn_storage_ptr_$_t_struct$_Trader_$485_storage_$returns$__$attached_to$_t_array$_t_struct$_Trader_$485_storage_$dyn_storage_ptr_$",
                         "typeString": "function (struct Trader storage ref[] storage pointer,struct Trader storage ref)"
                       }
                     },
-                    "id": 591,
+                    "id": 592,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -11886,28 +11886,28 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 592,
+                  "id": 593,
                   "nodeType": "ExpressionStatement",
                   "src": "1208:97:2"
                 }
               ]
             },
             "functionSelector": "b74e0add",
-            "id": 594,
+            "id": 595,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
-                "id": 566,
+                "id": 567,
                 "kind": "modifierInvocation",
                 "modifierName": {
-                  "id": 565,
+                  "id": 566,
                   "name": "onlyOwner",
                   "nameLocations": [
                     "1067:9:2"
                   ],
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 540,
+                  "referencedDeclaration": 541,
                   "src": "1067:9:2"
                 },
                 "nodeType": "ModifierInvocation",
@@ -11918,17 +11918,17 @@
             "nameLocation": "1012:9:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 564,
+              "id": 565,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 561,
+                  "id": 562,
                   "mutability": "mutable",
                   "name": "_name",
                   "nameLocation": "1036:5:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 594,
+                  "scope": 595,
                   "src": "1022:19:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -11937,7 +11937,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 560,
+                    "id": 561,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "1022:6:2",
@@ -11950,12 +11950,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 563,
+                  "id": 564,
                   "mutability": "mutable",
                   "name": "_address",
                   "nameLocation": "1050:8:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 594,
+                  "scope": 595,
                   "src": "1042:16:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -11964,7 +11964,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 562,
+                    "id": 563,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1042:7:2",
@@ -11980,12 +11980,12 @@
               "src": "1021:38:2"
             },
             "returnParameters": {
-              "id": 567,
+              "id": 568,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1077:0:2"
             },
-            "scope": 674,
+            "scope": 675,
             "src": "1003:310:2",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -11993,7 +11993,7 @@
           },
           {
             "body": {
-              "id": 613,
+              "id": 614,
               "nodeType": "Block",
               "src": "1387:137:2",
               "statements": [
@@ -12003,31 +12003,31 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 605,
+                    "id": 606,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "baseExpression": {
-                        "id": 601,
+                        "id": 602,
                         "name": "stocksIndex",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 502,
+                        "referencedDeclaration": 503,
                         "src": "1401:11:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_string_memory_ptr_$_t_uint256_$",
                           "typeString": "mapping(string memory => uint256)"
                         }
                       },
-                      "id": 603,
+                      "id": 604,
                       "indexExpression": {
-                        "id": 602,
+                        "id": 603,
                         "name": "_name",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 596,
+                        "referencedDeclaration": 597,
                         "src": "1413:5:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -12049,7 +12049,7 @@
                     "operator": "!=",
                     "rightExpression": {
                       "hexValue": "30",
-                      "id": 604,
+                      "id": 605,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -12070,14 +12070,14 @@
                     }
                   },
                   "falseBody": {
-                    "id": 611,
+                    "id": 612,
                     "nodeType": "Block",
                     "src": "1478:39:2",
                     "statements": [
                       {
                         "expression": {
                           "hexValue": "66616c7365",
-                          "id": 609,
+                          "id": 610,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -12091,25 +12091,25 @@
                           },
                           "value": "false"
                         },
-                        "functionReturnParameters": 600,
-                        "id": 610,
+                        "functionReturnParameters": 601,
+                        "id": 611,
                         "nodeType": "Return",
                         "src": "1493:12:2"
                       }
                     ]
                   },
-                  "id": 612,
+                  "id": 613,
                   "nodeType": "IfStatement",
                   "src": "1398:119:2",
                   "trueBody": {
-                    "id": 608,
+                    "id": 609,
                     "nodeType": "Block",
                     "src": "1425:38:2",
                     "statements": [
                       {
                         "expression": {
                           "hexValue": "74727565",
-                          "id": 606,
+                          "id": 607,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -12123,8 +12123,8 @@
                           },
                           "value": "true"
                         },
-                        "functionReturnParameters": 600,
-                        "id": 607,
+                        "functionReturnParameters": 601,
+                        "id": 608,
                         "nodeType": "Return",
                         "src": "1440:11:2"
                       }
@@ -12134,7 +12134,7 @@
               ]
             },
             "functionSelector": "797fc8f1",
-            "id": 614,
+            "id": 615,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -12142,17 +12142,17 @@
             "nameLocation": "1330:10:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 597,
+              "id": 598,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 596,
+                  "id": 597,
                   "mutability": "mutable",
                   "name": "_name",
                   "nameLocation": "1355:5:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 614,
+                  "scope": 615,
                   "src": "1341:19:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -12161,7 +12161,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 595,
+                    "id": 596,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "1341:6:2",
@@ -12176,17 +12176,17 @@
               "src": "1340:21:2"
             },
             "returnParameters": {
-              "id": 600,
+              "id": 601,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 599,
+                  "id": 600,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 614,
+                  "scope": 615,
                   "src": "1382:4:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -12195,7 +12195,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 598,
+                    "id": 599,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "1382:4:2",
@@ -12209,7 +12209,7 @@
               ],
               "src": "1381:6:2"
             },
-            "scope": 674,
+            "scope": 675,
             "src": "1321:203:2",
             "stateMutability": "view",
             "virtual": false,
@@ -12217,7 +12217,7 @@
           },
           {
             "body": {
-              "id": 637,
+              "id": 638,
               "nodeType": "Block",
               "src": "1606:121:2",
               "statements": [
@@ -12229,31 +12229,31 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 626,
+                        "id": 627,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "baseExpression": {
-                            "id": 622,
+                            "id": 623,
                             "name": "stocksIndex",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 502,
+                            "referencedDeclaration": 503,
                             "src": "1625:11:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_mapping$_t_string_memory_ptr_$_t_uint256_$",
                               "typeString": "mapping(string memory => uint256)"
                             }
                           },
-                          "id": 624,
+                          "id": 625,
                           "indexExpression": {
-                            "id": 623,
+                            "id": 624,
                             "name": "_name",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 616,
+                            "referencedDeclaration": 617,
                             "src": "1637:5:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_string_memory_ptr",
@@ -12275,7 +12275,7 @@
                         "operator": "!=",
                         "rightExpression": {
                           "hexValue": "30",
-                          "id": 625,
+                          "id": 626,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -12297,7 +12297,7 @@
                       },
                       {
                         "hexValue": "4e6f7420666f756e64",
-                        "id": 627,
+                        "id": 628,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -12323,7 +12323,7 @@
                           "typeString": "literal_string \"Not found\""
                         }
                       ],
-                      "id": 621,
+                      "id": 622,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -12337,7 +12337,7 @@
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 628,
+                    "id": 629,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -12353,7 +12353,7 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 629,
+                  "id": 630,
                   "nodeType": "ExpressionStatement",
                   "src": "1617:45:2"
                 },
@@ -12361,38 +12361,38 @@
                   "expression": {
                     "expression": {
                       "baseExpression": {
-                        "id": 630,
+                        "id": 631,
                         "name": "stocks",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 498,
+                        "referencedDeclaration": 499,
                         "src": "1680:6:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_Stock_$479_storage_$dyn_storage",
+                          "typeIdentifier": "t_array$_t_struct$_Stock_$480_storage_$dyn_storage",
                           "typeString": "struct Stock storage ref[] storage ref"
                         }
                       },
-                      "id": 634,
+                      "id": 635,
                       "indexExpression": {
                         "baseExpression": {
-                          "id": 631,
+                          "id": 632,
                           "name": "stocksIndex",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 502,
+                          "referencedDeclaration": 503,
                           "src": "1687:11:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_mapping$_t_string_memory_ptr_$_t_uint256_$",
                             "typeString": "mapping(string memory => uint256)"
                           }
                         },
-                        "id": 633,
+                        "id": 634,
                         "indexExpression": {
-                          "id": 632,
+                          "id": 633,
                           "name": "_name",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 616,
+                          "referencedDeclaration": 617,
                           "src": "1699:5:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_string_memory_ptr",
@@ -12417,11 +12417,11 @@
                       "nodeType": "IndexAccess",
                       "src": "1680:26:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Stock_$479_storage",
+                        "typeIdentifier": "t_struct$_Stock_$480_storage",
                         "typeString": "struct Stock storage ref"
                       }
                     },
-                    "id": 635,
+                    "id": 636,
                     "isConstant": false,
                     "isLValue": true,
                     "isPure": false,
@@ -12429,22 +12429,22 @@
                     "memberLocation": "1707:12:2",
                     "memberName": "stockAddress",
                     "nodeType": "MemberAccess",
-                    "referencedDeclaration": 478,
+                    "referencedDeclaration": 479,
                     "src": "1680:39:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     }
                   },
-                  "functionReturnParameters": 620,
-                  "id": 636,
+                  "functionReturnParameters": 621,
+                  "id": 637,
                   "nodeType": "Return",
                   "src": "1673:46:2"
                 }
               ]
             },
             "functionSelector": "8b239aa5",
-            "id": 638,
+            "id": 639,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -12452,17 +12452,17 @@
             "nameLocation": "1541:15:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 617,
+              "id": 618,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 616,
+                  "id": 617,
                   "mutability": "mutable",
                   "name": "_name",
                   "nameLocation": "1571:5:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 638,
+                  "scope": 639,
                   "src": "1557:19:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -12471,7 +12471,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 615,
+                    "id": 616,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "1557:6:2",
@@ -12486,17 +12486,17 @@
               "src": "1556:21:2"
             },
             "returnParameters": {
-              "id": 620,
+              "id": 621,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 619,
+                  "id": 620,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 638,
+                  "scope": 639,
                   "src": "1598:7:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -12505,7 +12505,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 618,
+                    "id": 619,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1598:7:2",
@@ -12520,7 +12520,7 @@
               ],
               "src": "1597:9:2"
             },
-            "scope": 674,
+            "scope": 675,
             "src": "1532:195:2",
             "stateMutability": "view",
             "virtual": false,
@@ -12528,7 +12528,7 @@
           },
           {
             "body": {
-              "id": 672,
+              "id": 673,
               "nodeType": "Block",
               "src": "1810:242:2",
               "statements": [
@@ -12540,31 +12540,31 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 652,
+                        "id": 653,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "baseExpression": {
-                            "id": 648,
+                            "id": 649,
                             "name": "stocksIndex",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 502,
+                            "referencedDeclaration": 503,
                             "src": "1829:11:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_mapping$_t_string_memory_ptr_$_t_uint256_$",
                               "typeString": "mapping(string memory => uint256)"
                             }
                           },
-                          "id": 650,
+                          "id": 651,
                           "indexExpression": {
-                            "id": 649,
+                            "id": 650,
                             "name": "_name",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 640,
+                            "referencedDeclaration": 641,
                             "src": "1841:5:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_string_memory_ptr",
@@ -12586,7 +12586,7 @@
                         "operator": "==",
                         "rightExpression": {
                           "hexValue": "30",
-                          "id": 651,
+                          "id": 652,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -12608,7 +12608,7 @@
                       },
                       {
                         "hexValue": "53746f636b20776974682074686973206e616d652c20416c726561647920457869737473",
-                        "id": 653,
+                        "id": 654,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -12634,7 +12634,7 @@
                           "typeString": "literal_string \"Stock with this name, Already Exists\""
                         }
                       ],
-                      "id": 647,
+                      "id": 648,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -12648,7 +12648,7 @@
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 654,
+                    "id": 655,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -12664,37 +12664,37 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 655,
+                  "id": 656,
                   "nodeType": "ExpressionStatement",
                   "src": "1821:72:2"
                 },
                 {
                   "expression": {
-                    "id": 661,
+                    "id": 662,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "baseExpression": {
-                        "id": 656,
+                        "id": 657,
                         "name": "stocksIndex",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 502,
+                        "referencedDeclaration": 503,
                         "src": "1904:11:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_string_memory_ptr_$_t_uint256_$",
                           "typeString": "mapping(string memory => uint256)"
                         }
                       },
-                      "id": 658,
+                      "id": 659,
                       "indexExpression": {
-                        "id": 657,
+                        "id": 658,
                         "name": "_name",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 640,
+                        "referencedDeclaration": 641,
                         "src": "1916:5:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -12716,18 +12716,18 @@
                     "operator": "=",
                     "rightHandSide": {
                       "expression": {
-                        "id": 659,
+                        "id": 660,
                         "name": "stocks",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 498,
+                        "referencedDeclaration": 499,
                         "src": "1925:6:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_Stock_$479_storage_$dyn_storage",
+                          "typeIdentifier": "t_array$_t_struct$_Stock_$480_storage_$dyn_storage",
                           "typeString": "struct Stock storage ref[] storage ref"
                         }
                       },
-                      "id": 660,
+                      "id": 661,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -12747,7 +12747,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 662,
+                  "id": 663,
                   "nodeType": "ExpressionStatement",
                   "src": "1904:34:2"
                 },
@@ -12757,11 +12757,11 @@
                       {
                         "arguments": [
                           {
-                            "id": 667,
+                            "id": 668,
                             "name": "_name",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 640,
+                            "referencedDeclaration": 641,
                             "src": "1988:5:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_string_memory_ptr",
@@ -12769,11 +12769,11 @@
                             }
                           },
                           {
-                            "id": 668,
+                            "id": 669,
                             "name": "_address",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 642,
+                            "referencedDeclaration": 643,
                             "src": "2023:8:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -12792,18 +12792,18 @@
                               "typeString": "address"
                             }
                           ],
-                          "id": 666,
+                          "id": 667,
                           "name": "Stock",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 479,
+                          "referencedDeclaration": 480,
                           "src": "1961:5:2",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_struct$_Stock_$479_storage_ptr_$",
+                            "typeIdentifier": "t_type$_t_struct$_Stock_$480_storage_ptr_$",
                             "typeString": "type(struct Stock storage pointer)"
                           }
                         },
-                        "id": 669,
+                        "id": 670,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -12821,7 +12821,7 @@
                         "src": "1961:82:2",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Stock_$479_memory_ptr",
+                          "typeIdentifier": "t_struct$_Stock_$480_memory_ptr",
                           "typeString": "struct Stock memory"
                         }
                       }
@@ -12829,23 +12829,23 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_struct$_Stock_$479_memory_ptr",
+                          "typeIdentifier": "t_struct$_Stock_$480_memory_ptr",
                           "typeString": "struct Stock memory"
                         }
                       ],
                       "expression": {
-                        "id": 663,
+                        "id": 664,
                         "name": "stocks",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 498,
+                        "referencedDeclaration": 499,
                         "src": "1949:6:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_Stock_$479_storage_$dyn_storage",
+                          "typeIdentifier": "t_array$_t_struct$_Stock_$480_storage_$dyn_storage",
                           "typeString": "struct Stock storage ref[] storage ref"
                         }
                       },
-                      "id": 665,
+                      "id": 666,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -12855,11 +12855,11 @@
                       "nodeType": "MemberAccess",
                       "src": "1949:11:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_array$_t_struct$_Stock_$479_storage_$dyn_storage_ptr_$_t_struct$_Stock_$479_storage_$returns$__$attached_to$_t_array$_t_struct$_Stock_$479_storage_$dyn_storage_ptr_$",
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_array$_t_struct$_Stock_$480_storage_$dyn_storage_ptr_$_t_struct$_Stock_$480_storage_$returns$__$attached_to$_t_array$_t_struct$_Stock_$480_storage_$dyn_storage_ptr_$",
                         "typeString": "function (struct Stock storage ref[] storage pointer,struct Stock storage ref)"
                       }
                     },
-                    "id": 670,
+                    "id": 671,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -12875,28 +12875,28 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 671,
+                  "id": 672,
                   "nodeType": "ExpressionStatement",
                   "src": "1949:95:2"
                 }
               ]
             },
             "functionSelector": "a360feb1",
-            "id": 673,
+            "id": 674,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
-                "id": 645,
+                "id": 646,
                 "kind": "modifierInvocation",
                 "modifierName": {
-                  "id": 644,
+                  "id": 645,
                   "name": "onlyOwner",
                   "nameLocations": [
                     "1800:9:2"
                   ],
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 540,
+                  "referencedDeclaration": 541,
                   "src": "1800:9:2"
                 },
                 "nodeType": "ModifierInvocation",
@@ -12907,17 +12907,17 @@
             "nameLocation": "1745:8:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 643,
+              "id": 644,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 640,
+                  "id": 641,
                   "mutability": "mutable",
                   "name": "_name",
                   "nameLocation": "1768:5:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 673,
+                  "scope": 674,
                   "src": "1754:19:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -12926,7 +12926,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 639,
+                    "id": 640,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "1754:6:2",
@@ -12939,12 +12939,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 642,
+                  "id": 643,
                   "mutability": "mutable",
                   "name": "_address",
                   "nameLocation": "1783:8:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 673,
+                  "scope": 674,
                   "src": "1775:16:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -12953,7 +12953,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 641,
+                    "id": 642,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1775:7:2",
@@ -12969,19 +12969,19 @@
               "src": "1753:39:2"
             },
             "returnParameters": {
-              "id": 646,
+              "id": 647,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1810:0:2"
             },
-            "scope": 674,
+            "scope": 675,
             "src": "1736:316:2",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 675,
+        "scope": 676,
         "src": "221:1842:2",
         "usedErrors": []
       }
@@ -12994,7 +12994,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.13",
-  "updatedAt": "2023-04-04T18:51:30.292Z",
+  "updatedAt": "2023-04-05T17:17:18.808Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

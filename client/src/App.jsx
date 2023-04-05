@@ -43,7 +43,6 @@ const App = () => {
    //       .on("receipt", (receipt) => {
    //          console.log("contract Address: ", receipt.contractAddress);
    //          setMessage("Contract Deplpyed at " + receipt.contractAddress);
-   //          axios.post("/");
    //       });
    // };
 

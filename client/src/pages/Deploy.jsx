@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Stock from "../abis/Stock.json";
 import web3 from "../connections";
-import axios from 'axios'
-import Whitelist from '../abis/Whitelist.json'
+import axios from "axios";
+import Whitelist from "../abis/Whitelist.json";
+import DeployStock from "../components/deploy/DeployStock";
+import DeployTrader from "../components/deploy/DeployTrader";
 
 const Deploy = () => {
+   const [mode, setMode] = useState("stock");
+   console.log('mode: ', mode);
+
    const [accounts, setAccounts] = useState([]);
    const [deployParams, setDeployParams] = useState({
       companyName: "",
@@ -17,19 +22,21 @@ const Deploy = () => {
 
    const whitelistContract = new web3.eth.Contract(Whitelist.abi);
 
-   const [message, setMessage] = useState('');
+   const [message, setMessage] = useState("");
 
    const checkStock = () => {
-      whitelistContract.deploy({
-         data: Whitelist.bytecode
-      }).send()
-   }
+      whitelistContract
+         .deploy({
+            data: Whitelist.bytecode,
+         })
+         .send();
+   };
 
    const deployStock = async () => {
       if (
-         (!deployParams.companyName || 
+         !deployParams.companyName ||
          deployParams.amount < 0 ||
-         deployParams.initialPrice < 0)
+         deployParams.initialPrice < 0
       ) {
          alert("Enter all the parameters");
          return;
@@ -50,10 +57,7 @@ const Deploy = () => {
          .send({ from: mainAccount, gas: 1500000 })
          .on("receipt", (receipt) => {
             console.log("contract Address: ", receipt.contractAddress);
-            setMessage("Contract Deplpyed at "+ receipt.contractAddress);
-            axios.post('/');
-
-
+            setMessage("Contract Deplpyed at " + receipt.contractAddress);
 
             //   setDeployedContracts([
             //      ...deployedContracts,
@@ -73,44 +77,11 @@ const Deploy = () => {
 
    return (
       <div className="">
-         <div className="flex flex-col mx-auto space-y-4 py-3 p-3">
-            <h1 className="text-4xl text-center">Deploy a new Stock</h1>
-
-            <input
-               type="text"
-               name="companyName"
-               onChange={(e) => handleChange(e)}
-               value={deployParams.companyName}
-               placeholder="CompanyName"
-               className="p-3 border-2 border-black  rounded-md"
-            />
-            <input
-               type="number"
-               name="amount"
-               value={deployParams.amount}
-               onChange={(e) => handleChange(e)}
-               placeholder="Amount"
-               className="p-3 border-2 border-black  rounded-md"
-            />
-            <input
-               type="number"
-               name="initialPrice"
-               value={deployParams.initialPrice}
-               onChange={(e) => handleChange(e)}
-               placeholder="Initial Price"
-               className="p-3 border-2 border-black  rounded-md"
-            />
-
-         <button
-          onClick={deployStock}
-         className="text-white bg-blue-600 p-2 rounded-lg"
-         >Deploy</button>
-         <p>{message}</p>
-         {accounts.map((address,index) => {
-           return <p key={index}>{address}</p>
-         })}
+         <div className="flex items-center justify-center space-x-5 p-4">
+            <button onClick={() => setMode('stock')} className={`px-3 py-2 text-lg rounded-lg ${mode === 'stock' ? 'bg-primary text-white' : 'text-primary bg-white border-2 border-primary'}`} >Stock</button>
+            <button onClick={() => setMode('trader')} className={`px-3 py-2 text-lg rounded-lg ${mode === 'trader' ? 'bg-primary text-white' : 'text-primary bg-white border-2 border-primary'}`} >Trader</button>
          </div>
-
+            {mode === "stock" ? <DeployStock /> : mode === 'trader' && <DeployTrader />}
       </div>
    );
 };
