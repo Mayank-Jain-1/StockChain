@@ -36,8 +36,8 @@ contract Trader {
         _;
     }
 
-    constructor() {
-        owner = msg.sender;
+    constructor(address _address) {
+        owner = _address;
     }
 
     SellTransaction[] public sellTransact;
