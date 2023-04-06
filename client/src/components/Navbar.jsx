@@ -6,14 +6,12 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
    const dispatch = useDispatch();
    const walletAddress = useSelector((store) => store.walletAddress);
-   console.log("walletAddress: ", walletAddress);
    useEffect(() => {
       getCurrentwallet();
       addWalletListener();
    });
 
    const [page, setPage] = useState('home');
-   console.log('page: ', page);
 
    const connectwallet = async () => {
       if (
@@ -25,7 +23,6 @@ const Navbar = () => {
                method: "eth_requestAccounts",
             });
             dispatch(setWalletAddress(accounts[0]));
-            console.log(accounts[0]);
          } catch (err) {
             console.error(err.message);
          }
@@ -44,7 +41,6 @@ const Navbar = () => {
             });
             if (accounts.length > 0) {
                dispatch(setWalletAddress(accounts[0]));
-               console.log(accounts[0]);
             } else {
                console.log("Connect to MetaMask Wallet");
             }
@@ -62,10 +58,8 @@ const Navbar = () => {
       ) {
          window.ethereum.on("accountsChanged", (accounts) => {
             dispatch(setWalletAddress(accounts[0]));
-            console.log(accounts[0]);
          });
       } else {
-         dispatch(setWalletAddress(""));
          console.log("Install Metamask");
       }
    };

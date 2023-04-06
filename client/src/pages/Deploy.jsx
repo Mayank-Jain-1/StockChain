@@ -8,7 +8,6 @@ import DeployTrader from "../components/deploy/DeployTrader";
 
 const Deploy = () => {
    const [mode, setMode] = useState("stock");
-   console.log('mode: ', mode);
 
    const [accounts, setAccounts] = useState([]);
    const [deployParams, setDeployParams] = useState({

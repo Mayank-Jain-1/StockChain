@@ -12,8 +12,8 @@ import { setWhitelistAddress } from "./actions/index";
 const App = () => {
 
 	const dispatch = useDispatch();
+   const address = useSelector(store => store.walletAddress);
 	const whiteListAddress = useSelector(store=> store.whiteListAddress);
-	console.log('whiteListAddress: ', whiteListAddress);
   	const [account, setAccount] = useState(['0x8661cd3bd7fddd4f66385238f8e49f2fbac6701d5c0083baa5290e87c849f73f',
 
 ]);
@@ -47,24 +47,31 @@ const App = () => {
    // };
 
    const deployWhitelist = async () => {
-      const whitelistContract = new web3.eth.Contract(Whitelist.abi);
-      const deployedWhitelist = await whitelistContract
+      if(address){
+
+         const whitelistContract = new web3.eth.Contract(Whitelist.abi);
+         const deployedWhitelist = await whitelistContract
          .deploy({
             data: Whitelist.bytecode,
          })
          .send({ 
-				from: '0x3BBD75b06EF48811963E8794457d8e1f6Ce95cC1',
+            from: address,
 				gas: 1000000
-		 })
+         })
          .on("receipt", (receipt) => {
-				console.log(receipt.contractAddress);
-			 dispatch(setWhitelistAddress(receipt.contractAddress));
+            dispatch(setWhitelistAddress(receipt.contractAddress));
 			});
-   };
+      }
+      else{
+         console.log("Wallet not connected or wrong address");
+      }
+   }
 
    useEffect(() => {
-		deployWhitelist();
-	}, []);
+      if(!whiteListAddress){
+         deployWhitelist();
+      }
+	}, [address]);
 
    return (
       <BrowserRouter>

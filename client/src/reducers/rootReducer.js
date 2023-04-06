@@ -4,7 +4,7 @@ import walletAddressReducer from './walletAddressReducer'
 
 
 const rootReducer = combineReducers({
-    whiteListAddress: whitelistReducer,
+    whitelistAddress: whitelistReducer,
     walletAddress: walletAddressReducer
 })
 
