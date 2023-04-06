@@ -46,8 +46,16 @@ const DeployStock = () => {
          })
          .send({ from: account, gas: 1500000 })
          .on("receipt", (receipt) => {
-            console.log("contract Address: ", receipt.contractAddress);
-            alert("Contract Deplpyed at " + receipt.contractAddress);
+            let stockAddress = receipt.contractAddress;
+            alert("Contract Deplpyed at " + stockAddress);
+            const whitelistContract = new web3.eth.Contract(
+               Whitelist.abi,
+               whitelistAddress
+            );
+            whitelistContract.methods.addStock(deployParams.companyName, stockAddress).send({
+               from: account,
+               gas: 1000000
+            });
             // axios.get("/");
 
             //   setDeployedContracts([

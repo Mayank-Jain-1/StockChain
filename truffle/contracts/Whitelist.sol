@@ -65,7 +65,7 @@ contract Whitelist{
         require(stocksIndex[_name] != 0, "Not found");
         return stocks[stocksIndex[_name]].stockAddress;
     } 
-
+    
     function addStock(string memory _name, address _address) public onlyOwner {
         require(stocksIndex[_name] == 0, "Stock with this name, Already Exists");
         stocksIndex[_name] = stocks.length;
