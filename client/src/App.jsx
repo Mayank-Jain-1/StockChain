@@ -8,15 +8,15 @@ import web3 from "./connections";
 import Whitelist from "./abis/Whitelist.json";
 import Navbar from "./components/Navbar";
 import { useDispatch, useSelector } from "react-redux";
-import { setWhitelistAddress } from "./actions/index";
+import { addStocks, setWhitelistAddress } from "./actions/index";
+import axios from "axios";
 const App = () => {
-
-	const dispatch = useDispatch();
-   const address = useSelector(store => store.walletAddress);
-	const whiteListAddress = useSelector(store=> store.whiteListAddress);
-  	const [account, setAccount] = useState(['0x8661cd3bd7fddd4f66385238f8e49f2fbac6701d5c0083baa5290e87c849f73f',
-
-]);
+   const dispatch = useDispatch();
+   const address = useSelector((store) => store.walletAddress);
+   const whiteListAddress = useSelector((store) => store.whiteListAddress);
+   const [account, setAccount] = useState([
+      "0x8661cd3bd7fddd4f66385238f8e49f2fbac6701d5c0083baa5290e87c849f73f",
+   ]);
    // const deployStock = async () => {
    //    if (
    //       !deployParams.companyName ||
@@ -46,36 +46,45 @@ const App = () => {
    //       });
    // };
 
-   const deployWhitelist = async () => {
-      if(address){
+   const getStocks = () => {
+      axios.get("/stocks").then((res) => {
+         dispatch(addStocks(res.data));
+      });
+   };
 
+   const deployWhitelist = async () => {
+      if (address) {
          const whitelistContract = new web3.eth.Contract(Whitelist.abi);
          const deployedWhitelist = await whitelistContract
-         .deploy({
-            data: Whitelist.bytecode,
-         })
-         .send({ 
-            from: address,
-				gas: 1000000
-         })
-         .on("receipt", (receipt) => {
-            dispatch(setWhitelistAddress(receipt.contractAddress));
-			});
-      }
-      else{
+            .deploy({
+               data: Whitelist.bytecode,
+            })
+            .send({
+               from: address,
+               gas: 1000000,
+            })
+            .on("receipt", (receipt) => {
+               dispatch(setWhitelistAddress(receipt.contractAddress));
+            });
+      } else {
          console.log("Wallet not connected or wrong address");
       }
-   }
+   };
+
+   
+   useEffect(() => {
+      getStocks();
+   }, []);
 
    useEffect(() => {
-      if(!whiteListAddress){
+      if (!whiteListAddress) {
          deployWhitelist();
       }
-	}, [address]);
+   }, [address]);
 
    return (
       <BrowserRouter>
-			<Navbar />
+         <Navbar />
          <Routes>
             <Route path="/" element={<MarketPlace />} />
             <Route path="/home" element={<Home />} />

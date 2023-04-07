@@ -12,3 +12,11 @@ export const setWalletAddress = (address) => {
     address: address
   }
 }
+
+
+export const addStocks = (stocks) => {
+  return {
+    type: "ADD_STOCKS",
+    stocks: stocks
+  }
+}

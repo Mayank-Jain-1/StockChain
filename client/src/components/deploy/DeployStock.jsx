@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Stock from "../../abis/Stock.json";
 import web3 from "../../connections";
 import axios from "axios";
 import Whitelist from "../../abis/Whitelist.json";
+import { addStocks } from "../../actions";
 
 const DeployStock = () => {
+   const dispatch = useDispatch();
+   const stocks = useSelector((store) => store.stocks);
    const account = useSelector((store) => store.walletAddress);
    const whitelistAddress = useSelector((store) => store.whitelistAddress);
 
@@ -20,9 +23,9 @@ const DeployStock = () => {
 
    const deployStock = async () => {
       const isDeployed = await checkStock();
-      if(isDeployed){
-         alert('already deployed');
-         return ;
+      if (isDeployed) {
+         alert("already deployed");
+         return;
       }
       if (
          !deployParams.companyName ||
@@ -53,16 +56,22 @@ const DeployStock = () => {
                Whitelist.abi,
                whitelistAddress
             );
-            whitelistContract.methods.addStock(companyName, stockAddress).send({
-               from: account,
-               gas: 1000000
-            }).then(res => {
-               axios.post('/stocks', {
-                  "id": companyName,
-                  "name": companyName,
-                  "address": stockAddress
+            whitelistContract.methods
+               .addStock(companyName, stockAddress)
+               .send({
+                  from: account,
+                  gas: 1000000,
                })
-            });
+               .then((res) => {
+                  axios.post("/stocks", {
+                     id: companyName,
+                     name: companyName,
+                     address: stockAddress,
+                  });
+                  axios.get("/stocks").then((res) => {
+                     dispatch(addStocks(res.data));
+                  });
+               });
             // axios.get("/");
 
             //   setDeployedContracts([
@@ -122,6 +131,14 @@ const DeployStock = () => {
          >
             Deploy
          </button>
+         {stocks.slice().reverse().map((stock) => {
+            return (
+               <div key={stock.name}>
+                  <p>{stock.name}</p>
+                  <p>{stock.address}</p>
+               </div>
+            );
+         })}
       </div>
    );
 };
