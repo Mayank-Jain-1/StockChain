@@ -51,7 +51,8 @@ contract Whitelist{
         }));
     }
 
-    function checkStock(string memory _name) view public onlyOwner returns(bool){
+    function checkStock(string memory _name) view public returns(bool){
+        
         if(stocksIndex[_name] != 0){
             return true;
         }

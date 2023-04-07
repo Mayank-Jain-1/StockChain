@@ -25,6 +25,7 @@ contract Stock {
     event printString(string val);
 
     constructor(string memory _companyName, uint _amount, uint _initialPrice) {
+
         companyName = _companyName;
         unsold_amount = _amount;
         currentPrice = _initialPrice;
