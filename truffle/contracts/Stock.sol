@@ -9,7 +9,7 @@ struct Holder {
 
 contract Stock {
     
-    address private owner;
+    address private owner = 0x9BEa1a961e2D19F37020f528DEd95781f67d191B;
     address public contractAddress;
     uint public unsold_amount;
     uint public amountInPublic;

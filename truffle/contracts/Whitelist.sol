@@ -13,14 +13,13 @@ struct Trader{
 }
 
 contract Whitelist{
-    address owner;
+    address owner = 0x9BEa1a961e2D19F37020f528DEd95781f67d191B;
     Trader[] traders;
     mapping(address => uint) traderIndex;
     Stock[] stocks;
     mapping(string => uint) stocksIndex;
 
     constructor(){
-        owner = msg.sender;
         traders.push(Trader({
             name: "owner",
             traderAddress: 0x0000000000000000000000000000000000000000
@@ -52,7 +51,7 @@ contract Whitelist{
         }));
     }
 
-    function checkStock(string memory _name) view public returns(bool){
+    function checkStock(string memory _name) view public onlyOwner returns(bool){
         if(stocksIndex[_name] != 0){
             return true;
         }
