@@ -13,10 +13,8 @@ import axios from "axios";
 const App = () => {
    const dispatch = useDispatch();
    const address = useSelector((store) => store.walletAddress);
-   const whiteListAddress = useSelector((store) => store.whiteListAddress);
-   const [account, setAccount] = useState([
-      "0x8661cd3bd7fddd4f66385238f8e49f2fbac6701d5c0083baa5290e87c849f73f",
-   ]);
+   const stocks = useSelector((store) => store.stocks);
+   const whiteListAddress = useSelector((store) => store.whitelistAddress);
    // const deployStock = async () => {
    //    if (
    //       !deployParams.companyName ||
@@ -55,7 +53,8 @@ const App = () => {
    const deployWhitelist = async () => {
       if (address) {
          const whitelistContract = new web3.eth.Contract(Whitelist.abi);
-         const deployedWhitelist = await whitelistContract
+
+         whitelistContract
             .deploy({
                data: Whitelist.bytecode,
             })
@@ -64,21 +63,38 @@ const App = () => {
                gas: 1000000,
             })
             .on("receipt", (receipt) => {
-               dispatch(setWhitelistAddress(receipt.contractAddress));
+               console.log(receipt);
+               if (receipt.status === true) {
+                  dispatch(setWhitelistAddress(receipt.contractAddress));
+                  axios.post('/whitelistaddress', {
+                     address: receipt.contractAddress
+                  })
+               }
             });
       } else {
          console.log("Wallet not connected or wrong address");
       }
    };
 
-   
    useEffect(() => {
       getStocks();
    }, []);
 
    useEffect(() => {
+      // axios.delete("/stocks/1").then(() => {
+      //    axios.get("/stocks").then((res) => dispatch(addStocks(res.data)));
+      // });
+   }, []);
+
+   useEffect(() => {
       if (!whiteListAddress) {
-         deployWhitelist();
+         axios.get("/whitelistaddress").then((res) => {
+            if (!res.data || !res.data[0]) {
+               deployWhitelist();
+            }else{
+               dispatch(setWhitelistAddress(res.data[0].address))
+            }
+         });
       }
    }, [address]);
 
@@ -89,7 +105,7 @@ const App = () => {
             <Route path="/" element={<MarketPlace />} />
             <Route path="/home" element={<Home />} />
             <Route path="/deploy" element={<Deploy />} />
-            <Route path="/stocks" element={<Stocks />} />
+            <Route path="/stocks/:name" element={<Stocks />} />
          </Routes>
       </BrowserRouter>
    );

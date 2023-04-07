@@ -5,6 +5,7 @@ import web3 from "../../connections";
 import axios from "axios";
 import Whitelist from "../../abis/Whitelist.json";
 import { addStocks } from "../../actions";
+import StockCard from "./StockCard";
 
 const DeployStock = () => {
    const dispatch = useDispatch();
@@ -51,7 +52,7 @@ const DeployStock = () => {
          .send({ from: account, gas: 1500000 })
          .on("receipt", (receipt) => {
             let stockAddress = receipt.contractAddress;
-            alert("Contract Deplpyed at " + stockAddress);
+            console.log(receipt);
             const whitelistContract = new web3.eth.Contract(
                Whitelist.abi,
                whitelistAddress
@@ -62,15 +63,25 @@ const DeployStock = () => {
                   from: account,
                   gas: 1000000,
                })
-               .then((res) => {
-                  axios.post("/stocks", {
-                     id: companyName,
-                     name: companyName,
-                     address: stockAddress,
-                  });
-                  axios.get("/stocks").then((res) => {
-                     dispatch(addStocks(res.data));
-                  });
+               .on("receipt", (res) => {
+                  if (res.status) {
+                     axios
+                        .post("/stocks", {
+                           name: companyName,
+                        })
+                        .then(() => {
+                           alert("contract Deployed Successfully");
+                        });
+                     axios.get("/stocks").then((res) => {
+                        dispatch(addStocks(res.data));
+                     });
+                  }
+               })
+               .catch((err) => {
+                  alert(
+                     "Could not deploy stock. Make sure you are have Government wallet address"
+                  );
+                  console.log(err);
                });
             // axios.get("/");
 
@@ -79,7 +90,12 @@ const DeployStock = () => {
             //      receipt.contractAddress,
             //   ]);
          })
-         .catch((err) => console.log(err));
+         .catch((err) => {
+            alert(
+               "Could not deploy stock. Make sure you are have Government wallet address"
+            );
+            console.log(err);
+         });
    };
 
    const checkStock = async () => {
@@ -131,14 +147,14 @@ const DeployStock = () => {
          >
             Deploy
          </button>
-         {stocks.slice().reverse().map((stock) => {
-            return (
-               <div key={stock.name}>
-                  <p>{stock.name}</p>
-                  <p>{stock.address}</p>
-               </div>
-            );
-         })}
+         {stocks
+            .slice()
+            .reverse()
+            .map((stock) => {
+               return (
+                  <StockCard key={stock.name} name={stock.name}/>
+               );
+            })}
       </div>
    );
 };

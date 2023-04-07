@@ -1,30 +1,31 @@
 {
   "stocks": [
     {
-      "id": "Reliance",
-      "name": "Reliance",
-      "address": "0x42B06B0f0aCE27D4a02ea77173Ca75775dB05c0c"
+      "name": "reliance",
+      "id": 1
     },
     {
-      "id": "Tata",
-      "name": "Tata",
-      "address": "0xC28f8BC89086f1d1D0a12B0E72C24357B1F9Bc3b"
+      "name": "seomt",
+      "id": 2
     },
     {
-      "id": "Reliancedasfas",
-      "name": "Reliancedasfas",
-      "address": "0x0251fa00ca38d18b193Ad3f1348d14651484F91e"
+      "name": "Yes",
+      "id": 3
     },
     {
-      "id": "TCS",
-      "name": "TCS",
-      "address": "0xb6e2528Eb76209F223356E13d967F79270bF38A5"
+      "name": "Why Not",
+      "id": 4
     },
     {
-      "id": "Honda",
-      "name": "Honda",
-      "address": "0x46f4c5e8EC6A9b18a0dD764916Ff2c18a18DB349"
+      "name": "tum miles",
+      "id": 5
     }
   ],
-  "traders": []
+  "traders": [],
+  "whitelistaddress": [
+    {
+      "address": "0x39F7d59d4c17e2a52Cc000cF9ff21538b1232bE5",
+      "id": 1
+    }
+  ]
 }
