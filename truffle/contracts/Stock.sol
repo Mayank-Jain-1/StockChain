@@ -14,7 +14,7 @@ contract Stock {
     uint public unsold_amount;
     uint public amountInPublic;
     string public companyName;
-    uint public currentPrice = 1;
+    uint public currentPrice;
     address[] transactions;
     mapping(address => uint) public holderIndex;
     Holder[] public holders;

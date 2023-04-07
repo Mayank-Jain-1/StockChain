@@ -1,30 +1,22 @@
 {
   "stocks": [
     {
-      "name": "reliance",
+      "name": "Reliance",
       "id": 1
     },
     {
-      "name": "seomt",
+      "name": "Honda",
       "id": 2
     },
     {
-      "name": "Yes",
+      "name": "TCS",
       "id": 3
-    },
-    {
-      "name": "Why Not",
-      "id": 4
-    },
-    {
-      "name": "tum miles",
-      "id": 5
     }
   ],
   "traders": [],
   "whitelistaddress": [
     {
-      "address": "0x39F7d59d4c17e2a52Cc000cF9ff21538b1232bE5",
+      "address": "0xA8eDf7c8C2Fef857E9A75581Eae541044bcdb8c1",
       "id": 1
     }
   ]

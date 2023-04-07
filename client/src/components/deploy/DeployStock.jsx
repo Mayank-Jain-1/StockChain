@@ -147,14 +147,14 @@ const DeployStock = () => {
          >
             Deploy
          </button>
-         {stocks
-            .slice()
-            .reverse()
-            .map((stock) => {
-               return (
-                  <StockCard key={stock.name} name={stock.name}/>
-               );
-            })}
+         <div className="py-5">
+            {stocks
+               .slice()
+               .reverse()
+               .map((stock) => {
+                  return <StockCard key={stock.name} name={stock.name} />;
+               })}
+         </div>
       </div>
    );
 };
