@@ -1,0 +1,15 @@
+{
+  "stocks": [
+    {
+      "id": "Reliance",
+      "name": "Reliance",
+      "address": "0x42B06B0f0aCE27D4a02ea77173Ca75775dB05c0c"
+    },
+    {
+      "id": "Tata ",
+      "name": "Tata ",
+      "address": "0xC28f8BC89086f1d1D0a12B0E72C24357B1F9Bc3b"
+    }
+  ],
+  "traders": []
+}

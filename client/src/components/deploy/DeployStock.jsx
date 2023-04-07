@@ -32,6 +32,7 @@ const DeployStock = () => {
          alert("Enter all the parameters");
          return;
       }
+      const companyName = deployParams.companyName;
       const ABI = Stock.abi;
       const bytecode = Stock.bytecode;
       const contract = new web3.eth.Contract(ABI);
@@ -52,9 +53,15 @@ const DeployStock = () => {
                Whitelist.abi,
                whitelistAddress
             );
-            whitelistContract.methods.addStock(deployParams.companyName, stockAddress).send({
+            whitelistContract.methods.addStock(companyName, stockAddress).send({
                from: account,
                gas: 1000000
+            }).then(res => {
+               axios.post('/stocks', {
+                  "id": companyName,
+                  "name": companyName,
+                  "address": stockAddress
+               })
             });
             // axios.get("/");
 
