@@ -9,4 +9,4 @@ const stockReducer = (state = initialState, action) => {
    }
 };
 
-export default stockReducer;
+export default stockReducer

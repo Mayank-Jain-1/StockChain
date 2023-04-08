@@ -4,7 +4,7 @@ import Trader from "../../abis/Trader.json";
 import Whitelist from "../../abis/Whitelist.json";
 import web3 from "../../connections";
 
-const StockCard = ({ walletAddress }) => {
+const TraderCard = ({ walletAddress }) => {
    const whitelistAddress = useSelector((store) => store.whitelistAddress);
 
    const [traderInfo, setTraderInfo] = useState({
@@ -78,4 +78,4 @@ const StockCard = ({ walletAddress }) => {
    );
 };
 
-export default StockCard;
+export default TraderCard;

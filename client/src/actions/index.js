@@ -20,3 +20,10 @@ export const addStocks = (stocks) => {
     stocks: stocks
   }
 }
+
+export const addTraders = (traders) => {
+  return {
+    type: "ADD_TRADERS",
+    traders: traders
+  }
+}

@@ -8,7 +8,7 @@ import web3 from "./connections";
 import Whitelist from "./abis/Whitelist.json";
 import Navbar from "./components/Navbar";
 import { useDispatch, useSelector } from "react-redux";
-import { addStocks, setWhitelistAddress } from "./actions/index";
+import { addStocks, addTraders, setWhitelistAddress } from "./actions/index";
 import axios from "axios";
 const App = () => {
    const dispatch = useDispatch();
@@ -50,6 +50,10 @@ const App = () => {
       });
    };
 
+   const getTraders = () => {
+      axios.get("/traders").then((res) => dispatch(addTraders(res.data)));
+   }
+
    const deployWhitelist = async () => {
       if (address) {
          const whitelistContract = new web3.eth.Contract(Whitelist.abi);
@@ -77,6 +81,7 @@ const App = () => {
 
    useEffect(() => {
       getStocks();
+      getTraders();
    }, []);
 
    useEffect(() => {
