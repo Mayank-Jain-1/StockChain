@@ -9,6 +9,7 @@ import StockCard from "./StockCard";
 
 const DeployStock = () => {
    const dispatch = useDispatch();
+   const governmentAccount = useSelector((store) => store.governmentAccount);
    const stocks = useSelector((store) => store.stocks);
    const account = useSelector((store) => store.walletAddress);
    const whitelistAddress = useSelector((store) => store.whitelistAddress);
@@ -23,6 +24,11 @@ const DeployStock = () => {
    };
 
    const deployStock = async () => {
+      if (account.toLowerCase() != governmentAccount.toLowerCase()) {
+         alert("Only Government Account can be used to deploy");
+         return;
+      }
+
       const isDeployed = await checkStock();
       if (isDeployed) {
          alert("already deployed");
@@ -103,14 +109,20 @@ const DeployStock = () => {
          Whitelist.abi,
          whitelistAddress
       );
+      console.log("whitelistContract: ", whitelistContract);
+
       const res = await whitelistContract.methods
          .checkStock(deployParams.companyName)
-         .call();
+         .call()
+         .catch((err) => {
+            console.log(err)
+         });
+      console.log("res: ", res);
       return res;
    };
 
    return (
-      <div className="flex flex-col mx-auto space-y-4 py-3 p-3 max-w-2xl">
+      <div className="flex flex-col mx-auto space-y-4 py-3 p-3 max-w-3xl">
          <h1 className="text-4xl text-center">Deploy a new Stock</h1>
          <label htmlFor="">Company Name</label>
          <input

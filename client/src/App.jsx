@@ -63,7 +63,6 @@ const App = () => {
                gas: 1000000,
             })
             .on("receipt", (receipt) => {
-               console.log(receipt);
                if (receipt.status === true) {
                   dispatch(setWhitelistAddress(receipt.contractAddress));
                   axios.post('/whitelistaddress', {

@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import Stock from "../../abis/Stock.json";
+import Trader from "../../abis/Trader.json";
 import Whitelist from "../../abis/Whitelist.json";
 import web3 from "../../connections";
 
-const StockCard = ({ name }) => {
+const StockCard = ({ walletAddress }) => {
    const whitelistAddress = useSelector((store) => store.whitelistAddress);
 
-   const [stockInfo, setStockInfo] = useState({
+   const [traderInfo, setTraderInfo] = useState({
       name: name,
-      price: 0,
-      unsold: 0,
-      amountInPublic: 0,
-      address: "",
+      contractAddress: '',
+      walletAddress: '',
    });
    //COde to initially fetch the address
    const getStockAddress = async () => {

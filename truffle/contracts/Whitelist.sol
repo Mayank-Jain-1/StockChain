@@ -35,7 +35,7 @@ contract Whitelist{
       _;
     }
 
-    function verifyTrader(address _address) view public returns(bool){
+    function verifyTrader(address _address)  view public returns(bool){
         if(traderIndex[_address] == 0){
             return false;
         }
@@ -51,7 +51,7 @@ contract Whitelist{
         }));
     }
 
-    function checkStock(string memory _name) view public returns(bool){
+    function checkStock(string memory _name) view public onlyOwner returns(bool){
         
         if(stocksIndex[_name] != 0){
             return true;
