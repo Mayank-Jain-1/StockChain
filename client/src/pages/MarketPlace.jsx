@@ -2,19 +2,31 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import BuyStockCard from "../components/marketplace/BuyStockCard";
+import web3 from "../connections";
+import Trader from '../abis/Trader.json'
 
 //import "./App.css";
 const MarketPlace = () => {
    const stocks = useSelector((store) => store.stocks);
 
+   const walletAddress = useSelector(store => store.walletAddress);
    const [traderAddress, setTraderAddress] = useState("");
 
    const handleChange = (e) => {
       setTraderAddress(e.target.value);
    };
 
+   const withdrawToWallet = () => {
+      
+      const traderContract = new web3.eth.Contract(Trader.abi, traderAddress);
+      traderContract.methods.withdraw().send({
+         from: walletAddress,
+         gas: 1500000,
+      })
+   }
+
    return (
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center p-5">
          <div className="max-w-3xl w-full space-y-4">
             <h1 className="text-4xl text-center my-5">
                Buy and sell stocks through Blockchaiin
@@ -28,9 +40,20 @@ const MarketPlace = () => {
                placeholder="0x00000000000000000000000000000000000"
                className="p-3 border-2 border-black  rounded-md w-full"
             />
+
+            <button onClick={() => withdrawToWallet()} className="bg-green-600 text-white w-full px-4 py-3 rounded-lg">
+               Withdraw Money to Wallet
+            </button>
+
             <div className="py-10">
                {stocks.map((stock, index) => {
-                  return <BuyStockCard key={index} name={stock.name} traderAddress={traderAddress}/>;
+                  return (
+                     <BuyStockCard
+                        key={index}
+                        name={stock.name}
+                        traderAddress={traderAddress}
+                     />
+                  );
                })}
             </div>
          </div>
