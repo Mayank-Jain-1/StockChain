@@ -64,7 +64,7 @@ const App = () => {
             })
             .send({
                from: address,
-               gas: 1000000,
+               gas: 1200000,
             })
             .on("receipt", (receipt) => {
                if (receipt.status === true) {
@@ -106,10 +106,10 @@ const App = () => {
       <BrowserRouter>
          <Navbar />
          <Routes>
-            <Route path="/" element={<MarketPlace />} />
+            <Route path="/marketplace" element={<MarketPlace />} />
             <Route path="/home" element={<Home />} />
             <Route path="/deploy" element={<Deploy />} />
-            <Route path="/stocks/:name" element={<Stocks />} />
+            <Route path="/stocks" element={<Stocks />} />
          </Routes>
       </BrowserRouter>
    );

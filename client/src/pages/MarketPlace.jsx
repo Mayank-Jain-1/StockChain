@@ -1,70 +1,39 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import BuyStockCard from "../components/marketplace/BuyStockCard";
+
 //import "./App.css";
 const MarketPlace = () => {
-   const [walletAddress, setWalletAddress] = useState("");
-   useEffect(() => {
-      getCurrentwallet();
-      addWalletListener();
-   });
+   const stocks = useSelector((store) => store.stocks);
 
-   const connectwallet = async () => {
-      if (
-         typeof window != "undefined" &&
-         typeof window.ethereum != "undefined"
-      ) {
-         try {
-            const accounts = await window.ethereum.request({
-               method: "eth_requestAccounts",
-            });
-            setWalletAddress(accounts[0]);
-            console.log(accounts[0]);
-         } catch (err) {
-            console.error(err.message);
-         }
-      } else {
-         console.log("Install Metamask");
-      }
-   };
-   const getCurrentwallet = async () => {
-      if (
-         typeof window != "undefined" &&
-         typeof window.ethereum != "undefined"
-      ) {
-         try {
-            const accounts = await window.ethereum.request({
-               method: "eth_accounts",
-            });
-            if (accounts.length > 0) {
-               setWalletAddress(accounts[0]);
-               console.log(accounts[0]);
-            } else {
-               console.log("Connect to MetaMask Wallet");
-            }
-         } catch (err) {
-            console.error(err.message);
-         }
-      } else {
-         console.log("Install Metamask");
-      }
-   };
-   const addWalletListener = async () => {
-      if (
-         typeof window != "undefined" &&
-         typeof window.ethereum != "undefined"
-      ) {
-         window.ethereum.on("accountsChanged", (accounts) => {
-            setWalletAddress(accounts[0]);
-            console.log(accounts[0]);
-         });
-      } else {
-         setWalletAddress("");
-         console.log("Install Metamask");
-      }
+   const [traderAddress, setTraderAddress] = useState("");
+
+   const handleChange = (e) => {
+      setTraderAddress(e.target.value);
    };
 
    return (
-      <div>
-
+      <div className="flex flex-col items-center">
+         <div className="max-w-3xl w-full space-y-4">
+            <h1 className="text-4xl text-center my-5">
+               Buy and sell stocks through Blockchaiin
+            </h1>
+            <label htmlFor="">Trader Contract Address</label>
+            <input
+               type="text"
+               name="companyName"
+               onChange={(e) => handleChange(e)}
+               value={traderAddress}
+               placeholder="0x00000000000000000000000000000000000"
+               className="p-3 border-2 border-black  rounded-md w-full"
+            />
+            <div className="py-10">
+               {stocks.map((stock, index) => {
+                  return <BuyStockCard key={index} name={stock.name} traderAddress={traderAddress}/>;
+               })}
+            </div>
+         </div>
       </div>
    );
 };

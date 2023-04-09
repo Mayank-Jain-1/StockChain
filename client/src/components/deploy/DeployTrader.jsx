@@ -13,7 +13,6 @@ const DeployTrader = () => {
    const governmentAccount = useSelector((store) => store.governmentAccount);
    const whitelistAddress = useSelector((store) => store.whitelistAddress);
    const traders = useSelector(store => store.traders);
-   console.log('traders: ', traders);
 
    const [deployParams, setDeployParams] = useState({
       name: "",
@@ -60,7 +59,7 @@ const DeployTrader = () => {
       traderContract
          .deploy({
             data: Trader.bytecode,
-            arguments: [deployParams.address],
+            arguments: [deployParams.name,deployParams.address],
          })
          .send({
             from: address,
@@ -73,7 +72,7 @@ const DeployTrader = () => {
                whitelistAddress
             );
             whitelistContract.methods
-               .addTrader(deployParams.name, deployParams.address)
+               .addTrader(deployParams.name,deployParams.address,deployedAddress)
                .send({
                   from: address,
                   gas: 1000000,
@@ -124,8 +123,8 @@ const DeployTrader = () => {
             Deploy
          </button>
          {
-            traders.map((trader) => {
-               return <TraderCard address={trader.walletAddress}/>
+            traders.map((trader,index) => {
+               return <TraderCard key={index} walletAddress={trader.walletAddress}/>
             })
          }
       </div>
