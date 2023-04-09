@@ -30,6 +30,8 @@ struct CurrentTransaction {
 
 contract Trader {
     address public owner;
+    uint public sellOrders = 0;
+    uint public buyOrders = 0;
     
     modifier restricted() {
         require(msg.sender == owner,"Owner Only");
@@ -49,6 +51,7 @@ contract Trader {
     string public name; 
     
     event printString(string val);
+    event printUint(uint val);
 
     receive() payable external {
         emit printString("Received the amount");
@@ -58,7 +61,7 @@ contract Trader {
         sellTransact.push(SellTransaction(_stockid,_sellprice,_amount,_timestamp,_transactionid));
     }
 
-    function retriveBuyDetails(address _stockid,uint256 _buyprice,uint256 _amount,uint256 _timestamp,uint256 _transactionid)public{
+    function retreiveBuyDetails(address _stockid,uint256 _buyprice,uint256 _amount,uint256 _timestamp,uint256 _transactionid)public{
         buyTransact.push(BuyTransaction(_stockid,_buyprice,_amount,_timestamp,_transactionid));
     }   
 
@@ -72,12 +75,16 @@ contract Trader {
 
     function buyOrder(address _contractAddress) external restricted payable{
         StockInterface(_contractAddress).buyOrder{value: msg.value}();
+        buyOrders++;
     }
 
     function sellOrder(address _contractAddress) external restricted payable{
         StockInterface(_contractAddress).sellOrder();
+        sellOrders++;
     }
-    function withdraw() external restricted payable{
+
+    function withdraw() external restricted payable {
+        emit printUint(address(this).balance);
         payable(owner).transfer(address(this).balance);
     }
 }
