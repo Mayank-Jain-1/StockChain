@@ -3,10 +3,11 @@ import { useSelector } from "react-redux";
 import web3 from "../../connections";
 import Stock from "../../abis/Stock.json";
 import Whitelist from "../../abis/Whitelist.json";
+import Trader from '../../abis/Trader.json'
 
 const BuyStockCard = ({ traderAddress, name }) => {
    const whitelistAddress = useSelector((store) => store.whitelistAddress);
-
+   const walletAddress = useSelector(store => store.walletAddress);
    const [stockInfo, setStockInfo] = useState({
       name: name,
       price: 0,
@@ -61,16 +62,65 @@ const BuyStockCard = ({ traderAddress, name }) => {
 
    //function to buy a stock
 
-   const verifyTrader = () => {
-      
+   const verifyTrader = async () => {
+      try{
+         const whitelistContract = new web3.eth.Contract(
+            Whitelist.abi,
+         whitelistAddress
+         );
+         const res = await whitelistContract.methods
+         .verifyTrader(traderAddress)
+         .call()  
+         return res;
+      }catch(err){
+         console.log(err);
+         return false;
+      }
    }
 
-   const buyStock = () => {
+
+
+   const buyStock = async () => {
       if (!traderAddress) {
          alert("No trader contract address");
+         return;
       }
 
-      const traderContract = new web3.eth.Contract("");
+      const isVerified = await verifyTrader();
+
+      if(!isVerified){
+         alert('Trader Account verification failed');
+         return;
+      }
+
+      const traderContract = new web3.eth.Contract(Trader.abi, traderAddress);
+      traderContract.methods.buyOrder(stockInfo.address).send({
+         from: walletAddress,
+         gas: 1500000,
+         value: stockInfo.price * (10**18)
+      })
+      .then(res => console.log(res));
+   };
+
+   const sellStock = async () => {
+      if (!traderAddress) {
+         alert("No trader contract address");
+         return;
+      }
+
+      const isVerified = await verifyTrader();
+
+      if(!isVerified){
+         alert('Trader Account verification failed');
+         return;
+      }
+
+      const traderContract = new web3.eth.Contract(Trader.abi, traderAddress);
+      traderContract.methods.sellOrder(stockInfo.address).send({
+         from: walletAddress,
+         gas: 1500000,
+      })
+      .then(res => console.log(res));
    };
 
    return (
@@ -97,7 +147,7 @@ const BuyStockCard = ({ traderAddress, name }) => {
             </button>
             <button
                onClick={() => {
-                  buyStock();
+                  sellStock();
                }}
                className="py-2 px-4 w-full rounded-lg border-white border-2 bg-red-400 text-white"
             >
