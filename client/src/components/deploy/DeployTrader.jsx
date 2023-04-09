@@ -30,13 +30,13 @@ const DeployTrader = () => {
       setDeployParams({ ...deployParams, [e.target.name]: e.target.value });
    };
 
-   const checkTrader = async () => {
+   const checkWallet = async () => {
       const whitelistContract = new web3.eth.Contract(
          Whitelist.abi,
          whitelistAddress
       );
       const res = await whitelistContract.methods
-         .verifyTrader(deployParams.address)
+         .verifyWallet(deployParams.address)
          .call();
       return res;
    };
@@ -50,7 +50,7 @@ const DeployTrader = () => {
          alert("Only Government address can deploy a trader");
          return;
       }
-      const isDeployed = await checkTrader();
+      const isDeployed = await checkWallet();
       if (isDeployed) {
          alert("A trader using this wallet address is already Deployed!");
          return;

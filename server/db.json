@@ -3,22 +3,18 @@
     {
       "name": "Reliance",
       "id": 1
-    },
-    {
-      "name": "Tata",
-      "id": 2
     }
   ],
   "traders": [
     {
       "walletAddress": "0xBb964be96A268241567C5840D23B6Cf19a6eb66D",
-      "contractAddress": "0x4a74F76F88b37471Ab7Cc92D2c4A5A98BDe5ffE8",
+      "contractAddress": "0x776C2c0AA36eA75B2Bf3aF9a72B4845549B97c4C",
       "id": 1
     }
   ],
   "whitelistaddress": [
     {
-      "address": "0xE9987026134347f8FBEAC3C0E6643F1A33e2801F",
+      "address": "0x75954d10bD25f261A163F10275c7Bf71C65c06c7",
       "id": 1
     }
   ]

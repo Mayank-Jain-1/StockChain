@@ -64,7 +64,7 @@ const App = () => {
             })
             .send({
                from: address,
-               gas: 1200000,
+               gas: 1300000,
             })
             .on("receipt", (receipt) => {
                if (receipt.status === true) {

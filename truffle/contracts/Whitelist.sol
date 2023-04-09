@@ -13,7 +13,7 @@ struct Trader{
 }
 
 contract Whitelist{
-    address owner = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4;
+    address owner = 0x9BEa1a961e2D19F37020f528DEd95781f67d191B;
     Trader[] traders;
     mapping(address => address)  traderContractAddress;
     mapping(address => uint)  traderIndex;
@@ -61,8 +61,8 @@ contract Whitelist{
     }
      
     function getTraderAddress(address _walletAddress) view public returns(address) {
-        require(traderIndex[_walletAddress] != 0, 'No Trader contract exist for this walle t addresss');
-        return (traders[traderIndex[_walletAddress]].traderAddress);
+        require(traderContractAddress[_walletAddress] != address(0), 'No Trader contract exist for this wallet addresss');
+        return (traders[traderIndex[traderContractAddress[_walletAddress]]].traderAddress);
     }
 
     function checkStock(string memory _name) view public onlyOwner returns(bool){
