@@ -42,13 +42,18 @@ contract Whitelist{
         return true;
     }
 
-    function addTrader(string memory _name,address _address) public onlyOwner {
-        require(traderIndex[_address] == 0, "Trader already Exists");
-        traderIndex[_address] = traders.length;
+    function addTrader(string memory _name,address _walletAddress, address _contractAddress) public onlyOwner {
+        require(traderIndex[_walletAddress] == 0, "Trader already Exists");
+        traderIndex[_walletAddress] = traders.length;
         traders.push(Trader({
             name: _name,
-            traderAddress: _address
+            traderAddress: _contractAddress 
         }));
+    }
+     
+    function getTraderAddress(address _walletAddress) view public returns(address) {
+        require(traderIndex[_walletAddress] != 0, 'No Trader contract exist for this walle t addresss');
+        return (traders[traderIndex[_walletAddress]].traderAddress);
     }
 
     function checkStock(string memory _name) view public onlyOwner returns(bool){

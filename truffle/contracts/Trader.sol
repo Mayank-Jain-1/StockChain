@@ -36,8 +36,9 @@ contract Trader {
         _;
     }
 
-    constructor(address _address) {
+    constructor(string memory _name,address _address) {
         owner = _address;
+        name = _name;
     }
 
     SellTransaction[] public sellTransact;
@@ -53,7 +54,7 @@ contract Trader {
         emit printString("Received the amount");
     }
 
-    function retriveSellDetails(address _stockid,uint256 _sellprice,uint256 _amount,uint256 _timestamp,uint256 _transactionid)public{
+    function pushSellDetials(address _stockid,uint256 _sellprice,uint256 _amount,uint256 _timestamp,uint256 _transactionid)public{
         sellTransact.push(SellTransaction(_stockid,_sellprice,_amount,_timestamp,_transactionid));
     }
 
