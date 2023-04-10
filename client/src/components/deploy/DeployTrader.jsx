@@ -63,7 +63,7 @@ const DeployTrader = () => {
          })
          .send({
             from: address,
-            gas: 1000000,
+            gas: 1500000,
          })
          .then((res) => {
             const deployedAddress = res._address;

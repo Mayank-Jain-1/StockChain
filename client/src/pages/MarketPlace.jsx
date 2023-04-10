@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import BuyStockCard from "../components/marketplace/BuyStockCard";
 import web3 from "../connections";
-import Trader from '../abis/Trader.json'
+import Trader from "../abis/Trader.json";
 
 //import "./App.css";
 const MarketPlace = () => {
    const stocks = useSelector((store) => store.stocks);
 
-   const walletAddress = useSelector(store => store.walletAddress);
+   const walletAddress = useSelector((store) => store.walletAddress);
    const [traderAddress, setTraderAddress] = useState("");
 
    const handleChange = (e) => {
@@ -17,13 +17,22 @@ const MarketPlace = () => {
    };
 
    const withdrawToWallet = () => {
-      
       const traderContract = new web3.eth.Contract(Trader.abi, traderAddress);
-      traderContract.methods.withdraw().send({
-         from: walletAddress,
-         gas: 1500000,
-      })
-   }
+      traderContract.methods
+         .withdraw()
+         .send({
+            from: walletAddress,
+            gas: 1500000,
+         })
+         .then((res) => {
+            const amount = res.events.printUint.returnValues[0] / 10 ** 18;
+            if (amount === 0) {
+               alert("No Eth to be credited. Dont withdraw empty amounts");
+            } else {
+               alert(`Credited ${amount} Eth to your wallet`);
+            }
+         });
+   };
 
    return (
       <div className="flex flex-col items-center p-5">
@@ -41,7 +50,10 @@ const MarketPlace = () => {
                className="p-3 border-2 border-black  rounded-md w-full"
             />
 
-            <button onClick={() => withdrawToWallet()} className="bg-green-600 text-white w-full px-4 py-3 rounded-lg">
+            <button
+               onClick={() => withdrawToWallet()}
+               className="bg-green-600 text-white w-full px-4 py-3 rounded-lg"
+            >
                Withdraw Money to Wallet
             </button>
 

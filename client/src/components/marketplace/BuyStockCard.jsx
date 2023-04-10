@@ -99,7 +99,12 @@ const BuyStockCard = ({ traderAddress, name }) => {
          gas: 1500000,
          value: stockInfo.price * (10**18)
       })
-      .then(res => console.log(res));
+      .then(res => {
+         alert('Bought 1 stock of ' + name);
+      })
+      .catch(err => {
+         console.log(err);
+      });
    };
 
    const sellStock = async () => {
@@ -120,7 +125,13 @@ const BuyStockCard = ({ traderAddress, name }) => {
          from: walletAddress,
          gas: 1500000,
       })
-      .then(res => console.log(res));
+      .then(res => {
+         
+         alert('Sold 1 stock of '+ name);
+      })
+      .catch(err => {
+         alert('Not able to sell stock. Check if you have '+ name + ' stock in your inventory');
+      })
    };
 
    return (

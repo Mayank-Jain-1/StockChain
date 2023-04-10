@@ -3,18 +3,22 @@
     {
       "name": "Reliance",
       "id": 1
+    },
+    {
+      "name": "MS",
+      "id": 2
     }
   ],
   "traders": [
     {
       "walletAddress": "0xBb964be96A268241567C5840D23B6Cf19a6eb66D",
-      "contractAddress": "0x105D85B573cc050261a8A14746cBd69823e06e2e",
+      "contractAddress": "0x46971D3e86a3D51686A36da43Efe5Eb87b368Cab",
       "id": 1
     }
   ],
   "whitelistaddress": [
     {
-      "address": "0xB298e2fbCba7245a21f2F162E213D6d1079C6f91",
+      "address": "0xee34809eC31d6FF8d7dD421B344117CD03d43DCa",
       "id": 1
     }
   ]

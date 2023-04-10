@@ -3,11 +3,12 @@ import web3 from "../connections";
 import Stock from "../abis/Stock.json";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-
+import { useSelector } from "react-redux";
+import StockCard from "../components/deploy/StockCard";
 const Stocks = () => {
 
    const {name} = useParams();
-
+   const stocks = useSelector(store => store.stocks);
    // const getPrice = async (address) => {
    //    const StockContract = new web3.eth.Contract(Stock.abi, address);
    //    StockContract.methods
@@ -44,8 +45,15 @@ const Stocks = () => {
    // };
 
    return (
-      <div>
-         <h1>{name}</h1>
+      <div className="flex flex-col items-center">
+         <div className="max-w-3xl p-5 w-full">
+            {stocks
+               .slice()
+               .reverse()
+               .map((stock) => {
+                  return <StockCard key={stock.name} name={stock.name} />;
+               })}
+         </div>
       </div>
    );
 };
