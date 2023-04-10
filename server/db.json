@@ -5,20 +5,20 @@
       "id": 1
     },
     {
-      "name": "MS",
+      "name": "MicroHard",
       "id": 2
     }
   ],
   "traders": [
     {
       "walletAddress": "0xBb964be96A268241567C5840D23B6Cf19a6eb66D",
-      "contractAddress": "0x46971D3e86a3D51686A36da43Efe5Eb87b368Cab",
+      "contractAddress": "0xfe2408719C08A2F10FF1F30287F46180C060eCa0",
       "id": 1
     }
   ],
   "whitelistaddress": [
     {
-      "address": "0xee34809eC31d6FF8d7dD421B344117CD03d43DCa",
+      "address": "0xaC46c244a6f30099bD6381CFaf657bf60d8DA4cf",
       "id": 1
     }
   ]

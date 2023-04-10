@@ -1,89 +1,123 @@
 //SPDX-License// SPDX-License-Identifier: GPL-3.0
 
-pragma solidity >=0.8.2 < 0.9.0;
+pragma solidity >=0.8.2 <0.9.0;
 
-
-interface StockInterface{
+interface StockInterface {
     function buyOrder() external payable;
+
     function sellOrder() external payable;
-    function unsold_amount() view external returns(uint);
+
+    function unsold_amount() external view returns (uint);
 }
 
-struct BuyTransaction {
-        address stockid;
-        uint256 buyprice;
-        uint256 amount;
-        uint256 timestamp;
-        uint256 transactionid;
-    }
-struct SellTransaction {
-        address stockid;
-        uint256 sellprice;
-        uint256 amount;
-        uint256 timestamp;
-        uint256 transactionid;
-    }
-struct CurrentTransaction {
-        address stockid;
-        uint256 amount;
-    }
+struct Stock {
+    string name;
+    address stockAddress;
+    uint amount;
+}
+
+// struct BuyTransaction {
+//         address stockid;
+//         uint256 buyprice;
+//         uint256 amount;
+//         uint256 timestamp;
+//         uint256 transactionid;
+//     }
+// struct SellTransaction {
+//         address stockid;
+//         uint256 sellprice;
+//         uint256 amount;
+//         uint256 timestamp;
+//         uint256 transactionid;
+//     }
+// struct CurrentTransaction {
+//         address stockid;
+//         uint256 amount;
+//     }
 
 contract Trader {
     address public owner;
     uint public sellOrders = 0;
     uint public buyOrders = 0;
-    
-    modifier restricted() {
-        require(msg.sender == owner,"Owner Only");
-        _;
-    }
+    string public name;
+    mapping(address => uint) public stockIndex;
+    Stock[] stocks;
 
-    constructor(string memory _name,address _address) {
-        owner = _address;
-        name = _name;
-    }
-
-    SellTransaction[] public sellTransact;
-    BuyTransaction[] public buyTransact;
-    CurrentTransaction[] public currentTransact;
-
-    address public metamaskid;
-    string public name; 
-    
     event printString(string val);
     event printUint(uint val);
 
-    receive() payable external {
+    modifier restricted() {
+        require(msg.sender == owner, "Owner Only");
+        _;
+    }
+
+    constructor(string memory _name, address _address) {
+        owner = _address;
+        name = _name;
+        stocks.push(Stock({name: "", stockAddress: address(0), amount: 0}));
+    }
+
+    // SellTransaction[] public sellTransact;
+    // BuyTransaction[] public buyTransact;
+    // CurrentTransaction[] public currentTransact;
+
+    receive() external payable {
         emit printString("Received the amount");
     }
 
-    function pushSellDetials(address _stockid,uint256 _sellprice,uint256 _amount,uint256 _timestamp,uint256 _transactionid)public{
-        sellTransact.push(SellTransaction(_stockid,_sellprice,_amount,_timestamp,_transactionid));
+    // function pushSellDetials(address _stockid,uint256 _sellprice,uint256 _amount,uint256 _timestamp,uint256 _transactionid)public{
+    //     sellTransact.push(SellTransaction(_stockid,_sellprice,_amount,_timestamp,_transactionid));
+    // }
+
+    // function retreiveBuyDetails(address _stockid,uint256 _buyprice,uint256 _amount,uint256 _timestamp,uint256 _transactionid)public{
+    //     buyTransact.push(BuyTransaction(_stockid,_buyprice,_amount,_timestamp,_transactionid));
+    // }
+
+    // function retriveCurrentDetails(address _stockid,uint256 _amount)public{
+    //     currentTransact.push(CurrentTransaction(_stockid,_amount));
+    // }
+
+    function getStock(uint _index) view public returns(Stock memory){
+        return stocks[_index];
     }
 
-    function retreiveBuyDetails(address _stockid,uint256 _buyprice,uint256 _amount,uint256 _timestamp,uint256 _transactionid)public{
-        buyTransact.push(BuyTransaction(_stockid,_buyprice,_amount,_timestamp,_transactionid));
-    }   
-
-    function retriveCurrentDetails(address _stockid,uint256 _amount)public{
-        currentTransact.push(CurrentTransaction(_stockid,_amount));
-    }
-
-    function unsold_amount(address _contractAddress) public view returns(uint){
+    function unsold_amount(
+        address _contractAddress
+    ) public view returns (uint) {
         return StockInterface(_contractAddress).unsold_amount();
     }
 
-    function buyOrder(address _contractAddress) external restricted payable{
-        StockInterface(_contractAddress).buyOrder{value: msg.value}();
+    function buyOrder(
+        string memory _stockName,
+        address _stockAddress
+    ) external payable restricted {
+        StockInterface(_stockAddress).buyOrder{value: msg.value}();
         buyOrders++;
+        if (stockIndex[_stockAddress] == 0) {
+            stockIndex[_stockAddress] = stocks.length;
+            stocks.push(
+                Stock({
+                    name: _stockName,
+                    stockAddress: _stockAddress,
+                    amount: 1
+                })
+            );
+        } else {
+            stocks[stockIndex[_stockAddress]].amount =
+                stocks[stockIndex[_stockAddress]].amount +
+                1;
+        }
     }
 
-    function sellOrder(address _contractAddress) external restricted payable{
-        StockInterface(_contractAddress).sellOrder();
+    function sellOrder(address _stockAddress) external payable restricted {
+        require(stockIndex[_stockAddress] != 0, "You dont have this stock.");
+        require(stocks[stockIndex[_stockAddress]].amount > 0, "You have 0 amount of this Stock.");
+        StockInterface(_stockAddress).sellOrder();
         sellOrders++;
+        stocks[stockIndex[_stockAddress]].amount = stocks[stockIndex[_stockAddress]].amount - 1;
     }
 
-    function withdraw() external restricted payable {
+    function withdraw() external payable restricted {
         emit printUint(address(this).balance);
         payable(owner).transfer(address(this).balance);
     }

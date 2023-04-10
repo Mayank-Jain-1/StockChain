@@ -94,7 +94,7 @@ const BuyStockCard = ({ traderAddress, name }) => {
       }
 
       const traderContract = new web3.eth.Contract(Trader.abi, traderAddress);
-      traderContract.methods.buyOrder(stockInfo.address).send({
+      traderContract.methods.buyOrder(stockInfo.name, stockInfo.address).send({
          from: walletAddress,
          gas: 1500000,
          value: stockInfo.price * (10**18)
@@ -103,7 +103,11 @@ const BuyStockCard = ({ traderAddress, name }) => {
          alert('Bought 1 stock of ' + name);
       })
       .catch(err => {
-         console.log(err);
+         if(err.message.includes('Owner Only')){
+            alert('Transactions can only be made by the traders Wallet address');
+         }else{
+            console.log(err);
+         }
       });
    };
 
@@ -126,11 +130,14 @@ const BuyStockCard = ({ traderAddress, name }) => {
          gas: 1500000,
       })
       .then(res => {
-         
          alert('Sold 1 stock of '+ name);
       })
       .catch(err => {
-         alert('Not able to sell stock. Check if you have '+ name + ' stock in your inventory');
+         if(err.message.includes('Owner Only')){
+            alert('Transactions can only be made by the traders Wallet address');
+         }else{
+            alert('Not able to sell stock. Check if you have '+ name + ' stock in your inventory');
+         }
       })
    };
 
