@@ -89,10 +89,6 @@ const Navbar = () => {
                'home' ? 'text-primary' : 'text-white'}`} to="/home">
                   Home
                </Link>
-               <Link onClick={() => setPage('stocks')} className={`p-3 ${page === 
-               'stocks' ? 'text-primary' : 'text-white'}`} to="/stocks">
-                  Stocks
-               </Link>
                <Link onClick={() => setPage('deploy')} className={`p-3  ${page === 
                'deploy' ? 'text-primary' : 'text-white'}`} to="/deploy">
                   Deploy
@@ -100,6 +96,10 @@ const Navbar = () => {
                <Link onClick={() => setPage('marketplace')} className={`p-3 ${page === 
                'marketplace' ? 'text-primary' : 'text-white'}`} to="/marketplace">
                   MarketPlace
+               </Link>
+               <Link onClick={() => setPage('trader')} className={`p-3 ${page === 
+               'trader' ? 'text-primary' : 'text-white'}`} to="/trader">
+                  Trader
                </Link>
             </ul>
          </div>

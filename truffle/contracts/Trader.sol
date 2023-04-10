@@ -37,8 +37,6 @@ struct Stock {
 
 contract Trader {
     address public owner;
-    uint public sellOrders = 0;
-    uint public buyOrders = 0;
     string public name;
     mapping(address => uint) public stockIndex;
     Stock[] stocks;
@@ -50,6 +48,8 @@ contract Trader {
         require(msg.sender == owner, "Owner Only");
         _;
     }
+
+    
 
     constructor(string memory _name, address _address) {
         owner = _address;
@@ -77,8 +77,11 @@ contract Trader {
     //     currentTransact.push(CurrentTransaction(_stockid,_amount));
     // }
 
-    function getStock(uint _index) view public returns(Stock memory){
-        return stocks[_index];
+    // function getStocks(uint _index) view public returns(Stock memory){
+    //     return stocks[_index];
+    // }
+    function getStocks() view public restricted returns(Stock[] memory){
+        return stocks;
     }
 
     function unsold_amount(
@@ -92,7 +95,6 @@ contract Trader {
         address _stockAddress
     ) external payable restricted {
         StockInterface(_stockAddress).buyOrder{value: msg.value}();
-        buyOrders++;
         if (stockIndex[_stockAddress] == 0) {
             stockIndex[_stockAddress] = stocks.length;
             stocks.push(
@@ -113,7 +115,6 @@ contract Trader {
         require(stockIndex[_stockAddress] != 0, "You dont have this stock.");
         require(stocks[stockIndex[_stockAddress]].amount > 0, "You have 0 amount of this Stock.");
         StockInterface(_stockAddress).sellOrder();
-        sellOrders++;
         stocks[stockIndex[_stockAddress]].amount = stocks[stockIndex[_stockAddress]].amount - 1;
     }
 

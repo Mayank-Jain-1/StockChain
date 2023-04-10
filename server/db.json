@@ -3,22 +3,18 @@
     {
       "name": "Reliance",
       "id": 1
-    },
-    {
-      "name": "MicroHard",
-      "id": 2
     }
   ],
   "traders": [
     {
       "walletAddress": "0xBb964be96A268241567C5840D23B6Cf19a6eb66D",
-      "contractAddress": "0xfe2408719C08A2F10FF1F30287F46180C060eCa0",
+      "contractAddress": "0x6A2A8df84F5Dc7EAFD84007ff4c4183c463a8360",
       "id": 1
     }
   ],
   "whitelistaddress": [
     {
-      "address": "0xaC46c244a6f30099bD6381CFaf657bf60d8DA4cf",
+      "address": "0x0373fCF3AE1605D16d2Fe43312f54ABA61C2599b",
       "id": 1
     }
   ]

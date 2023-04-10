@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Home from "./pages/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Stocks from "./pages/Stocks";
 import Deploy from "./pages/deploy";
 import MarketPlace from "./pages/MarketPlace";
 import web3 from "./connections";
@@ -10,6 +9,7 @@ import Navbar from "./components/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { addStocks, addTraders, setWhitelistAddress } from "./actions/index";
 import axios from "axios";
+import Trader from "./pages/Trader";
 const App = () => {
    const dispatch = useDispatch();
    const address = useSelector((store) => store.walletAddress);
@@ -109,7 +109,7 @@ const App = () => {
             <Route path="/marketplace" element={<MarketPlace />} />
             <Route path="/home" element={<Home />} />
             <Route path="/deploy" element={<Deploy />} />
-            <Route path="/stocks" element={<Stocks />} />
+            <Route path="/trader" element={<Trader />} />
          </Routes>
       </BrowserRouter>
    );

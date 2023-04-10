@@ -79,7 +79,6 @@ const BuyStockCard = ({ traderAddress, name }) => {
    }
 
 
-
    const buyStock = async () => {
       if (!traderAddress) {
          alert("No trader contract address");
@@ -110,6 +109,7 @@ const BuyStockCard = ({ traderAddress, name }) => {
          }
       });
    };
+   
 
    const sellStock = async () => {
       if (!traderAddress) {
