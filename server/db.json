@@ -3,6 +3,10 @@
     {
       "name": "Reliance",
       "id": 1
+    },
+    {
+      "name": "Microsoft",
+      "id": 2
     }
   ],
   "traders": [

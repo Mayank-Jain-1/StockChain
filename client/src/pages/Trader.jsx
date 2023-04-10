@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import web3 from "../connections";
 import Whitelist from "../abis/Whitelist.json";
 import { useSelector } from "react-redux";
-import TraderJSON from '../abis/Trader.json'
-
+import TraderJSON from "../abis/Trader.json";
+import StockCard from "../components/trader/StockCard";
 
 const Trader = () => {
    const whitelistAddress = useSelector((store) => store.whitelistAddress);
-   const walletAddress = useSelector(store => store.walletAddress);
-   const [isVerified, setIsVerified] = useState(false)
+   const walletAddress = useSelector((store) => store.walletAddress);
+   const [isVerified, setIsVerified] = useState(false);
    const [traderAddress, setTraderAddress] = useState("");
    const handleChange = (e) => {
       setTraderAddress(e.target.value);
@@ -17,7 +17,7 @@ const Trader = () => {
       name: "",
       stocks: [],
    });
-   console.log('traderInfo: ', traderInfo);
+   console.log("traderInfo: ", traderInfo);
 
    const verifyTrader = async () => {
       try {
@@ -27,7 +27,14 @@ const Trader = () => {
          );
          const res = await whitelistContract.methods
             .verifyTrader(traderAddress)
-            .call();
+            .call()
+            .then((res) => {
+               return res;
+            })
+            .catch((err) => {
+               console.log(err);
+               return false;
+            });
          return res;
       } catch (err) {
          console.log(err);
@@ -35,31 +42,88 @@ const Trader = () => {
       }
    };
 
+   const fetchStocks = async () => {
+      const traderContract = new web3.eth.Contract(
+         TraderJSON.abi,
+         traderAddress
+      );
+      const stocks = traderContract.methods
+         .getStocks()
+         .call({
+            from: walletAddress,
+         })
+         .then((res) => {
+            return res;
+         })
+         .catch((err) => {
+            if (err.message.includes("Owner Only")) {
+               alert(
+                  "Transactions can only be made by the traders Wallet address"
+               );
+            } else {
+               console.log(err);
+            }
+         });
+      return stocks;
+   };
+
+   const fetchName = async () => {
+      const traderContract = new web3.eth.Contract(
+         TraderJSON.abi,
+         traderAddress
+      );
+      const name = await traderContract.methods
+         .name()
+         .call({
+            from: walletAddress,
+         })
+         .then((res) => {
+            return res;
+         })
+         .catch((err) => {
+            if (err.message.includes("Owner Only")) {
+               alert(
+                  "Transactions can only be made by the traders Wallet address"
+               );
+            } else {
+               console.log(err);
+            }
+         });
+      return name;
+   };
+
    const fetchDetails = async () => {
       const isVerified = await verifyTrader();
-      if (!isVerified) {
+      if (isVerified === false) {
+         if(setIsVerified){
+            setIsVerified(false);
+         }
+         setTraderInfo({
+            name: "",
+            stocks: [],
+         });
          alert("Couldnt Validate this Trader address, check your input");
          return;
       }
       setIsVerified(true);
-      const traderContract = new web3.eth.Contract(TraderJSON.abi, traderAddress);
-      traderContract.methods.getStocks().call({
-         from: walletAddress
-      })
-      .then(res => {
-         setTraderInfo({
-            ...traderInfo,
-            stocks: res
-         })
-      })
-      .catch(err => {
-         if(err.message.includes('Owner Only')){
-            alert('Transactions can only be made by the traders Wallet address');
-         }else{
-            console.log(err);
-         }
+      const stocks = await fetchStocks();
+      const name = await fetchName();
+      setTraderInfo({
+         name: name,
+         stocks: stocks,
       });
    };
+
+   useEffect(() => {
+      if (isVerified) {
+         const fetchLoop = setInterval(() => {
+            fetchDetails();
+         }, 1000);
+         return () => {
+            clearInterval(fetchLoop);
+         };
+      }
+   }, [isVerified]);
 
    return (
       <div className="flex flex-col items-center p-5">
@@ -82,6 +146,22 @@ const Trader = () => {
             >
                Get Information
             </button>
+            <div>
+               <h1 className="text-4xl text-center text-primary font-semibold my-5">
+                  {traderInfo.name}
+               </h1>
+               {traderInfo.stocks.slice(1).map((stock, index) => {
+                  return (
+                     <StockCard
+                        key={index}
+                        name={stock.name}
+                        amount={stock.amount}
+                        stockAddress={stock.stockAddress}
+                        traderAddress={traderAddress}
+                     />
+                  );
+               })}
+            </div>
          </div>
       </div>
    );
