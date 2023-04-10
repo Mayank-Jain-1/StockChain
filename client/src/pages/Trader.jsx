@@ -17,7 +17,6 @@ const Trader = () => {
       name: "",
       stocks: [],
    });
-   console.log("traderInfo: ", traderInfo);
 
    const verifyTrader = async () => {
       try {
@@ -125,13 +124,17 @@ const Trader = () => {
       }
    }, [isVerified]);
 
+   useEffect(() => {
+      
+   },[traderInfo.stocks])
+
    return (
       <div className="flex flex-col items-center p-5">
          <div className="w-full max-w-3xl space-y-4">
             <h1 className="text-4xl text-center my-5">
                Check Trader information
             </h1>
-            <label htmlFor="">Your trader address</label>
+            <label className="text-xl p-3">Your trader address</label>
             <input
                type="text"
                name="companyName"
@@ -150,6 +153,7 @@ const Trader = () => {
                <h1 className="text-4xl text-center text-primary font-semibold my-5">
                   {traderInfo.name}
                </h1>
+               <h1 className="text-xl p-3">Current Stock Holdings</h1>
                {traderInfo.stocks.slice(1).map((stock, index) => {
                   return (
                      <StockCard

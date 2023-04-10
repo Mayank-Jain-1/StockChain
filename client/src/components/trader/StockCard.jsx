@@ -5,10 +5,10 @@ import Trader from "../../abis/Trader.json";
 import Stock from "../../abis/Stock.json";
 
 const StockCard = ({ name, amount, stockAddress, traderAddress }) => {
+   console.log('amount: ', amount);
    const walletAddress = useSelector((store) => store.walletAddress);
    const [stockInfo, setStockInfo] = useState({
       name: name,
-      amount: amount,
       stockAddress: stockAddress,
       price: 0,
    });
@@ -97,7 +97,7 @@ const StockCard = ({ name, amount, stockAddress, traderAddress }) => {
                </p>
             </div>
             <div>
-               <h1 className="text-7xl mx-4">{stockInfo.amount}</h1>
+               <h1 className="text-7xl mx-4">{amount}</h1>
             </div>
          </div>
          <div className="flex space-x-3 mt-3">
