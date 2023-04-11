@@ -80,6 +80,14 @@ contract Trader {
     // function getStocks(uint _index) view public returns(Stock memory){
     //     return stocks[_index];
     // }
+
+    function verifyWallet() view public returns(bool){
+        if(msg.sender == owner){
+            return true;
+        }
+        return false;
+    }
+
     function getStocks() view public restricted returns(Stock[] memory){
         return stocks;
     }

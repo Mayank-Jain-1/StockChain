@@ -41,6 +41,31 @@ const Trader = () => {
       }
    };
 
+   const verifyWallet = async () => {
+      try {
+         const traderContract = new web3.eth.Contract(
+            TraderJSON.abi,
+            traderAddress
+         );
+         const res = await traderContract.methods
+            .verifyWallet()
+            .call({
+               from: walletAddress,
+            })
+            .then((res) => {
+               return res;
+            })
+            .catch((err) => {
+               console.log(err);
+               return false;
+            });
+         return res;
+      } catch (err) {
+         console.log(err);
+         return false;
+      }
+   };
+
    const fetchStocks = async () => {
       const traderContract = new web3.eth.Contract(
          TraderJSON.abi,
@@ -92,11 +117,13 @@ const Trader = () => {
    };
 
    const fetchDetails = async () => {
+      // try{
+
       const isVerified = await verifyTrader();
+
       if (isVerified === false) {
-         if(setIsVerified){
-            setIsVerified(false);
-         }
+         if (setIsVerified) setIsVerified(false);
+
          setTraderInfo({
             name: "",
             stocks: [],
@@ -104,6 +131,18 @@ const Trader = () => {
          alert("Couldnt Validate this Trader address, check your input");
          return;
       }
+
+      const isWalletVerified = await verifyWallet();
+      if (isWalletVerified === false) {
+         if (setIsVerified) setIsVerified(false);
+         setTraderInfo({
+            name: "",
+            stocks: [],
+         });
+         alert("Couldnt Verify the wallet address for this trader.");
+         return;
+      }
+
       setIsVerified(true);
       const stocks = await fetchStocks();
       const name = await fetchName();
@@ -111,11 +150,14 @@ const Trader = () => {
          name: name,
          stocks: stocks,
       });
+      // }
    };
 
    useEffect(() => {
       if (isVerified) {
          const fetchLoop = setInterval(() => {
+            console.log(isVerified);
+            console.log("Loop is running");
             fetchDetails();
          }, 1000);
          return () => {
@@ -123,10 +165,6 @@ const Trader = () => {
          };
       }
    }, [isVerified]);
-
-   useEffect(() => {
-      
-   },[traderInfo.stocks])
 
    return (
       <div className="flex flex-col items-center p-5">
@@ -153,18 +191,26 @@ const Trader = () => {
                <h1 className="text-4xl text-center text-primary font-semibold my-5">
                   {traderInfo.name}
                </h1>
-               <h1 className="text-xl p-3">Current Stock Holdings</h1>
-               {traderInfo.stocks.slice(1).map((stock, index) => {
-                  return (
-                     <StockCard
-                        key={index}
-                        name={stock.name}
-                        amount={stock.amount}
-                        stockAddress={stock.stockAddress}
-                        traderAddress={traderAddress}
-                     />
-                  );
-               })}
+               {traderInfo.name && (
+                  <h1 className="text-xl p-3 ">
+                     Your Stocks Portfolio{" "}
+                     <span className="text-sm">
+                        (Current and past stocks you have purchased)
+                     </span>
+                  </h1>
+               )}
+               {traderInfo.stocks &&
+                  traderInfo.stocks.slice(1).map((stock, index) => {
+                     return (
+                        <StockCard
+                           key={index}
+                           name={stock.name}
+                           amount={stock.amount}
+                           stockAddress={stock.stockAddress}
+                           traderAddress={traderAddress}
+                        />
+                     );
+                  })}
             </div>
          </div>
       </div>

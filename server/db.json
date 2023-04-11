@@ -5,20 +5,20 @@
       "id": 1
     },
     {
-      "name": "Microsoft",
+      "name": "TCS",
       "id": 2
     }
   ],
   "traders": [
     {
       "walletAddress": "0xBb964be96A268241567C5840D23B6Cf19a6eb66D",
-      "contractAddress": "0x6A2A8df84F5Dc7EAFD84007ff4c4183c463a8360",
+      "contractAddress": "0x91F56A6E34d1b96c648d226701a415690D76E4a2",
       "id": 1
     }
   ],
   "whitelistaddress": [
     {
-      "address": "0x0373fCF3AE1605D16d2Fe43312f54ABA61C2599b",
+      "address": "0x47a6F055034dFBC97F65a10B195f0F114fE68080",
       "id": 1
     }
   ]
