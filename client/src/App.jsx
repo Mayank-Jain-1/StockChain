@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Home from "./pages/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Deploy from "./pages/deploy";
 import MarketPlace from "./pages/MarketPlace";
+import Deploy from "./pages/Deploy.jsx";
 import web3 from "./connections";
 import Whitelist from "./abis/Whitelist.json";
 import Navbar from "./components/Navbar";
@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addStocks, addTraders, setWhitelistAddress } from "./actions/index";
 import axios from "axios";
 import Trader from "./pages/Trader";
+
 const App = () => {
    const dispatch = useDispatch();
    const address = useSelector((store) => store.walletAddress);
@@ -52,7 +53,7 @@ const App = () => {
 
    const getTraders = () => {
       axios.get("/traders").then((res) => dispatch(addTraders(res.data)));
-   }
+   };
 
    const deployWhitelist = async () => {
       if (address) {
@@ -69,9 +70,9 @@ const App = () => {
             .on("receipt", (receipt) => {
                if (receipt.status === true) {
                   dispatch(setWhitelistAddress(receipt.contractAddress));
-                  axios.post('/whitelistaddress', {
-                     address: receipt.contractAddress
-                  })
+                  axios.post("/whitelistaddress", {
+                     address: receipt.contractAddress,
+                  });
                }
             });
       } else {
@@ -95,8 +96,8 @@ const App = () => {
          axios.get("/whitelistaddress").then((res) => {
             if (!res.data || !res.data[0]) {
                deployWhitelist();
-            }else{
-               dispatch(setWhitelistAddress(res.data[0].address))
+            } else {
+               dispatch(setWhitelistAddress(res.data[0].address));
             }
          });
       }
