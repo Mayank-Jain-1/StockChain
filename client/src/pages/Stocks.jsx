@@ -47,7 +47,7 @@ const Stocks = () => {
    return (
       <div className="flex flex-col items-center">
          <div className="max-w-3xl p-5 w-full">
-            {stocks
+            {stocks && stocks
                .slice()
                .reverse()
                .map((stock) => {

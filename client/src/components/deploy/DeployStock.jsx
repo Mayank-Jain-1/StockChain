@@ -11,6 +11,7 @@ const DeployStock = () => {
    const dispatch = useDispatch();
    const governmentAccount = useSelector((store) => store.governmentAccount);
    const stocks = useSelector((store) => store.stocks);
+   console.log('stocks: ', stocks);
    const account = useSelector((store) => store.walletAddress);
    const whitelistAddress = useSelector((store) => store.whitelistAddress);
 
@@ -160,7 +161,7 @@ const DeployStock = () => {
             Deploy
          </button>
          <div className="py-5">
-            {stocks
+            {stocks && stocks
                .slice()
                .reverse()
                .map((stock) => {
