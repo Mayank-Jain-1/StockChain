@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Stock from "../abis/Stock.json";
-import web3 from "../connections";
 import Whitelist from "../abis/Whitelist.json";
 import DeployStock from "../components/deploy/DeployStock";
 import DeployTrader from "../components/deploy/DeployTrader";
+import Web3 from "web3";
 
 const Deploy = () => {
+
+   const web3 = new Web3(window.ethereum);
    const [mode, setMode] = useState("stock");
 
    const [accounts, setAccounts] = useState([]);

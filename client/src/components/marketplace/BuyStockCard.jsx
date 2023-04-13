@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import web3 from "../../connections";
 import Stock from "../../abis/Stock.json";
 import Whitelist from "../../abis/Whitelist.json";
 import Trader from "../../abis/Trader.json";
+import Web3 from "web3";
 
 const BuyStockCard = ({ traderAddress, name }) => {
+
+   const web3 = new Web3(window.ethereum);
    const whitelistAddress = useSelector((store) => store.whitelistAddress);
    const walletAddress = useSelector((store) => store.walletAddress);
    const [stockInfo, setStockInfo] = useState({

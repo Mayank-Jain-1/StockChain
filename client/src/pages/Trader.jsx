@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import web3 from "../connections";
 import Whitelist from "../abis/Whitelist.json";
 import { useSelector } from "react-redux";
 import TraderJSON from "../abis/Trader.json";
 import StockCard from "../components/trader/StockCard";
+import Web3 from "web3";
 
 const Trader = () => {
+
+   const web3 = new Web3(window.ethereum);
    const whitelistAddress = useSelector((store) => store.whitelistAddress);
    const walletAddress = useSelector((store) => store.walletAddress);
    const [isVerified, setIsVerified] = useState(false);

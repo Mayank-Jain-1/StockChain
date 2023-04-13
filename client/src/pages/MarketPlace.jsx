@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import BuyStockCard from "../components/marketplace/BuyStockCard";
-import web3 from "../connections";
 import Trader from "../abis/Trader.json";
+import Web3 from "web3";
 
 //import "./App.css";
 const MarketPlace = () => {
+
+   const web3 = new Web3(window.ethereum);
    const stocks = useSelector((store) => store.stocks);
 
    const walletAddress = useSelector((store) => store.walletAddress);

@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import web3 from "../../connections";
+import Web3 from "web3";
 import Whitelist from "../../abis/Whitelist.json";
 import Trader from "../../abis/Trader.json";
 import { addTraders } from "../../actions";
 import TraderCard from "./TraderCard";
 
 const DeployTrader = () => {
+
+   const web3 = new Web3(window.ethereum);
    const dispatch = useDispatch();
    const address = useSelector((store) => store.walletAddress);
    const governmentAccount = useSelector((store) => store.governmentAccount);
    const whitelistAddress = useSelector((store) => store.whitelistAddress);
    const traders = useSelector((store) => store.traders);
-   console.log('traders: ', traders);
+   console.log("traders: ", traders);
 
    const [deployParams, setDeployParams] = useState({
       name: "",
@@ -53,7 +55,9 @@ const DeployTrader = () => {
             dispatch(addTraders(res.slice(1)));
             console.log(res.slice(1));
          })
-         .catch((err) => {console.log(err)});
+         .catch((err) => {
+            console.log(err);
+         });
    };
 
    const deployTrader = async () => {

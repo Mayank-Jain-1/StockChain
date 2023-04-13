@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Stock from "../../abis/Stock.json";
-import web3 from "../../connections";
 import Whitelist from "../../abis/Whitelist.json";
+import Web3 from "web3";
 import { addStocks } from "../../actions";
 import StockCard from "./StockCard";
 
 const DeployStock = () => {
+   const web3 = new Web3(window.ethereum);
    const dispatch = useDispatch();
    const governmentAccount = useSelector((store) => store.governmentAccount);
    const stocks = useSelector((store) => store.stocks);
-   console.log("stocks: ", stocks);
    const account = useSelector((store) => store.walletAddress);
    const whitelistAddress = useSelector((store) => store.whitelistAddress);
 
