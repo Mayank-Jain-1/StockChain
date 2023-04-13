@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Web3 from "web3";
 import { useDispatch, useSelector } from "react-redux";
 import { setWalletAddress } from "../actions";
 import { Link } from "react-router-dom";
@@ -21,16 +20,12 @@ const Navbar = () => {
          typeof window.ethereum != "undefined"
       ) {
          try {
-            const web3 = new Web3(window.ethereum)
-            // web3.eth
-            window.metmaskweb3 = web3;
-            console.log('web3.eth: ', window.metmaskweb3.eth.Contract());
             const accounts = await window.ethereum.request({
                method: "eth_requestAccounts",
             });
             dispatch(setWalletAddress(accounts[0]));
          } catch (err) {
-            console.error(err.message);
+            console.log(err.message);
          }
       } else {
          console.log("Install Metamask");
