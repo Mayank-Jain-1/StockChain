@@ -11,6 +11,7 @@ import axios from "axios";
 import Trader from "./pages/Trader";
 import Web3 from "web3";
 
+
 const App = () => {
    const web3 = new Web3(window.ethereum);
    const dispatch = useDispatch();
