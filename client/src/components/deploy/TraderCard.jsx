@@ -5,46 +5,39 @@ import Whitelist from "../../abis/Whitelist.json";
 import web3 from "../../connections";
 import DeployTrader from "./DeployTrader";
 
-const TraderCard = ({ walletAddress }) => {
+const TraderCard = ({ traderAddress }) => {
    const whitelistAddress = useSelector((store) => store.whitelistAddress);
 
    const [traderInfo, setTraderInfo] = useState({
       name: "",
-      contractAddress: "",
-      walletAddress: walletAddress,
+      contractAddress: traderAddress,
+      walletAddress: "",
    });
    //COde to initially fetch the address
-   const getTraderAddress = async () => {
-      if (!whitelistAddress) {
-         console.log("No Whitelist address in the redux state");
-         return;
-      }
-      const whitelistContract = new web3.eth.Contract(
-         Whitelist.abi,
-         whitelistAddress
-      );
 
-      const res = await whitelistContract.methods
-         .getTraderAddress(walletAddress)
-         .call();
-      console.log("res: ", res);
-      setTraderInfo({ ...traderInfo, contractAddress: res });
-   };
 
-   const fetchTraderDetails = () => {
+   const fetchTraderDetails = async () => {
       const traderContract = new web3.eth.Contract(
          Trader.abi,
          traderInfo.contractAddress
       );
-      traderContract.methods
+      const name = await traderContract.methods
          .name()
          .call()
          .then((res) => {
-            setTraderInfo({
-               ...traderInfo,
-               name: res,
-            });
+            return res;
          });
+      const walletAddress = await traderContract.methods
+         .owner()
+         .call()
+         .then((res) => {
+            return res;
+         });
+      setTraderInfo({
+         ...traderInfo,
+         name: name,
+         walletAddress: walletAddress
+      })
    };
    //Code to fetch other details form stock address
    // const fetchDetails = async () => {
@@ -66,9 +59,9 @@ const TraderCard = ({ walletAddress }) => {
    //    })
    //    // console.log("Fetched Details: ", res);
    // };
-   useEffect(() => {
-      getTraderAddress();
-   }, [whitelistAddress]);
+   // useEffect(() => {
+   //    get();
+   // }, [whitelistAddress]);
 
    useEffect(() => {
       if (traderInfo.contractAddress) {

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Stock from "../../abis/Stock.json";
 import web3 from "../../connections";
-import axios from "axios";
 import Whitelist from "../../abis/Whitelist.json";
 import { addStocks } from "../../actions";
 import StockCard from "./StockCard";
@@ -11,7 +10,7 @@ const DeployStock = () => {
    const dispatch = useDispatch();
    const governmentAccount = useSelector((store) => store.governmentAccount);
    const stocks = useSelector((store) => store.stocks);
-   console.log('stocks: ', stocks);
+   console.log("stocks: ", stocks);
    const account = useSelector((store) => store.walletAddress);
    const whitelistAddress = useSelector((store) => store.whitelistAddress);
 
@@ -22,6 +21,23 @@ const DeployStock = () => {
    });
    const handleChange = (e) => {
       setDeployParams({ ...deployParams, [e.target.name]: e.target.value });
+   };
+
+   const getStocks = () => {
+      const whitelistContract = new web3.eth.Contract(
+         Whitelist.abi,
+         whitelistAddress
+      );
+      whitelistContract.methods
+         .getStocks()
+         .call()
+         .then((res) => {
+            dispatch(addStocks(res.slice(1)));
+            console.log("Res: ", res);
+         })
+         .catch((err) => {
+            console.log("er from here", err);
+         });
    };
 
    const deployStock = async () => {
@@ -72,16 +88,7 @@ const DeployStock = () => {
                })
                .on("receipt", (res) => {
                   if (res.status) {
-                     axios
-                        .post("/stocks", {
-                           name: companyName,
-                        })
-                        .then(() => {
-                           alert("contract Deployed Successfully");
-                        });
-                     axios.get("/stocks").then((res) => {
-                        dispatch(addStocks(res.data));
-                     });
+                     getStocks();
                   }
                })
                .catch((err) => {
@@ -90,12 +97,6 @@ const DeployStock = () => {
                   );
                   console.log(err);
                });
-            // axios.get("/");
-
-            //   setDeployedContracts([
-            //      ...deployedContracts,
-            //      receipt.contractAddress,
-            //   ]);
          })
          .catch((err) => {
             alert(
@@ -116,7 +117,7 @@ const DeployStock = () => {
          .checkStock(deployParams.companyName)
          .call()
          .catch((err) => {
-            console.log(err)
+            console.log(err);
          });
       console.log("res: ", res);
       return res;
@@ -161,12 +162,13 @@ const DeployStock = () => {
             Deploy
          </button>
          <div className="py-5">
-            {stocks && stocks
-               .slice()
-               .reverse()
-               .map((stock) => {
-                  return <StockCard key={stock.name} name={stock.name} />;
-               })}
+            {stocks &&
+               stocks
+                  .slice()
+                  .reverse()
+                  .map((stock) => {
+                     return <StockCard key={stock.name} name={stock.name} />;
+                  })}
          </div>
       </div>
    );

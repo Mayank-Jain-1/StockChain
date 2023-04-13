@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Web3 from "web3";
 import { useDispatch, useSelector } from "react-redux";
 import { setWalletAddress } from "../actions";
 import { Link } from "react-router-dom";
@@ -6,12 +7,13 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
    const dispatch = useDispatch();
    const walletAddress = useSelector((store) => store.walletAddress);
+
    useEffect(() => {
       getCurrentwallet();
       addWalletListener();
    });
 
-   const [page, setPage] = useState('home');
+   const [page, setPage] = useState("home");
 
    const connectwallet = async () => {
       if (
@@ -19,6 +21,10 @@ const Navbar = () => {
          typeof window.ethereum != "undefined"
       ) {
          try {
+            const web3 = new Web3(window.ethereum)
+            // web3.eth
+            window.metmaskweb3 = web3;
+            console.log('web3.eth: ', window.metmaskweb3.eth.Contract());
             const accounts = await window.ethereum.request({
                method: "eth_requestAccounts",
             });
@@ -85,20 +91,40 @@ const Navbar = () => {
          </div>
          <div className="flex items-center  justify-center shadow-lg  bg-black p-3 border-y-1 border-white">
             <ul className="space-x-3">
-               <Link onClick={() => setPage('home')} className={`p-3 ${page === 
-               'home' ? 'text-primary' : 'text-white'}`} to="/home">
+               <Link
+                  onClick={() => setPage("home")}
+                  className={`p-3 ${
+                     page === "home" ? "text-primary" : "text-white"
+                  }`}
+                  to="/home"
+               >
                   Home
                </Link>
-               <Link onClick={() => setPage('deploy')} className={`p-3  ${page === 
-               'deploy' ? 'text-primary' : 'text-white'}`} to="/deploy">
+               <Link
+                  onClick={() => setPage("deploy")}
+                  className={`p-3  ${
+                     page === "deploy" ? "text-primary" : "text-white"
+                  }`}
+                  to="/deploy"
+               >
                   Deploy
                </Link>
-               <Link onClick={() => setPage('marketplace')} className={`p-3 ${page === 
-               'marketplace' ? 'text-primary' : 'text-white'}`} to="/marketplace">
+               <Link
+                  onClick={() => setPage("marketplace")}
+                  className={`p-3 ${
+                     page === "marketplace" ? "text-primary" : "text-white"
+                  }`}
+                  to="/marketplace"
+               >
                   MarketPlace
                </Link>
-               <Link onClick={() => setPage('trader')} className={`p-3 ${page === 
-               'trader' ? 'text-primary' : 'text-white'}`} to="/trader">
+               <Link
+                  onClick={() => setPage("trader")}
+                  className={`p-3 ${
+                     page === "trader" ? "text-primary" : "text-white"
+                  }`}
+                  to="/trader"
+               >
                   Trader
                </Link>
             </ul>

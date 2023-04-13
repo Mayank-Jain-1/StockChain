@@ -13,7 +13,7 @@ struct Trader{
 }
 
 contract Whitelist{
-    address owner = 0x9BEa1a961e2D19F37020f528DEd95781f67d191B;
+    address private government = 0x0B44caC31591F42123b25eec8f8AE6B161b5610C;
     Trader[] traders;
     mapping(address => address)  traderContractAddress;
     mapping(address => uint)  traderIndex;
@@ -21,6 +21,7 @@ contract Whitelist{
     mapping(string => uint) stocksIndex;
 
     constructor(){
+        require(msg.sender == government, "Only Government account can create the whitelist");
         traders.push(Trader({
             name: "owner",
             traderAddress: 0x0000000000000000000000000000000000000000
@@ -32,8 +33,15 @@ contract Whitelist{
     }
 
     modifier onlyOwner {
-      require(msg.sender == owner);
+      require(msg.sender == government);
       _;
+    }
+
+    function getStocks() view public returns(Stock[] memory){
+        return stocks;
+    }
+    function getTraders() view public returns(Trader[] memory){
+        return traders;
     }
 
     function verifyWallet(address _walletAddress) view public returns(bool){

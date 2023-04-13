@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import web3 from "../../connections";
 import Whitelist from "../../abis/Whitelist.json";
 import Trader from "../../abis/Trader.json";
-import axios from "axios";
 import { addTraders } from "../../actions";
 import TraderCard from "./TraderCard";
 
@@ -12,7 +11,8 @@ const DeployTrader = () => {
    const address = useSelector((store) => store.walletAddress);
    const governmentAccount = useSelector((store) => store.governmentAccount);
    const whitelistAddress = useSelector((store) => store.whitelistAddress);
-   const traders = useSelector(store => store.traders);
+   const traders = useSelector((store) => store.traders);
+   console.log('traders: ', traders);
 
    const [deployParams, setDeployParams] = useState({
       name: "",
@@ -42,8 +42,19 @@ const DeployTrader = () => {
    };
 
    const getTraders = () => {
-      axios.get("/traders").then((res) => dispatch(addTraders(res.data)));
-   }
+      const whitelistContract = new web3.eth.Contract(
+         Whitelist.abi,
+         whitelistAddress
+      );
+      whitelistContract.methods
+         .getTraders()
+         .call()
+         .then((res) => {
+            dispatch(addTraders(res.slice(1)));
+            console.log(res.slice(1));
+         })
+         .catch((err) => {console.log(err)});
+   };
 
    const deployTrader = async () => {
       if (address.toLowerCase() !== governmentAccount.toLowerCase()) {
@@ -59,7 +70,7 @@ const DeployTrader = () => {
       traderContract
          .deploy({
             data: Trader.bytecode,
-            arguments: [deployParams.name,deployParams.address],
+            arguments: [deployParams.name, deployParams.address],
          })
          .send({
             from: address,
@@ -72,25 +83,20 @@ const DeployTrader = () => {
                whitelistAddress
             );
             whitelistContract.methods
-               .addTrader(deployParams.name,deployParams.address,deployedAddress)
+               .addTrader(
+                  deployParams.name,
+                  deployParams.address,
+                  deployedAddress
+               )
                .send({
                   from: address,
                   gas: 1000000,
                })
-               .then((res) => {
-                  if (res.status) {
-                     axios.post("/traders", {
-                        walletAddress: deployParams.address,
-                        contractAddress: deployedAddress
-                     }).then(() => {
-                        getTraders();
-                     })
-                  }
+               .then(() => {
+                  getTraders();
                });
          });
    };
-
-
 
    return (
       <div className="flex flex-col mx-auto space-y-4 py-3 p-3 max-w-3xl">
@@ -122,11 +128,11 @@ const DeployTrader = () => {
          >
             Deploy
          </button>
-         {
-            traders.map((trader,index) => {
-               return <TraderCard key={index} walletAddress={trader.walletAddress}/>
-            })
-         }
+         {traders.map((trader, index) => {
+            return (
+               <TraderCard key={index} traderAddress={trader.traderAddress} />
+            );
+         })}
       </div>
    );
 };

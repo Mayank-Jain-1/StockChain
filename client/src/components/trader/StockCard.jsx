@@ -22,54 +22,54 @@ const StockCard = ({ name, amount, stockAddress, traderAddress }) => {
       });
    };
 
-   const buyStock = async () => {
-      const traderContract = new web3.eth.Contract(Trader.abi, traderAddress);
-      traderContract.methods
-         .buyOrder(stockInfo.name, stockInfo.stockAddress)
-         .send({
-            from: walletAddress,
-            gas: 1500000,
-            value: stockInfo.price * 10 ** 18,
-         })
-         .then((res) => {
-            alert("Bought 1 stock of " + name);
-         })
-         .catch((err) => {
-            if (err.message.includes("Owner Only")) {
-               alert(
-                  "Transactions can only be made by the traders Wallet address"
-               );
-            } else {
-               console.log(err);
-            }
-         });
-   };
+   // const buyStock = async () => {
+   //    const traderContract = new web3.eth.Contract(Trader.abi, traderAddress);
+   //    traderContract.methods
+   //       .buyOrder(stockInfo.name, stockInfo.stockAddress)
+   //       .send({
+   //          from: walletAddress,
+   //          gas: 1500000,
+   //          value: stockInfo.price
+   //       })
+   //       .then((res) => {
+   //          alert("Bought 1 stock of " + name);
+   //       })
+   //       .catch((err) => {
+   //          if (err.message.includes("Owner Only")) {
+   //             alert(
+   //                "Transactions can only be made by the traders Wallet address"
+   //             );
+   //          } else {
+   //             console.log(err);
+   //          }
+   //       });
+   // };
 
-   const sellStock = async () => {
-      const traderContract = new web3.eth.Contract(Trader.abi, traderAddress);
-      traderContract.methods
-         .sellOrder(stockInfo.stockAddress)
-         .send({
-            from: walletAddress,
-            gas: 1500000,
-         })
-         .then((res) => {
-            alert("Sold 1 stock of " + name);
-         })
-         .catch((err) => {
-            if (err.message.includes("Owner Only")) {
-               alert(
-                  "Transactions can only be made by the traders Wallet address"
-               );
-            } else {
-               alert(
-                  "Not able to sell stock. Check if you have " +
-                     name +
-                     " stock in your inventory"
-               );
-            }
-         });
-   };
+   // const sellStock = async () => {
+   //    const traderContract = new web3.eth.Contract(Trader.abi, traderAddress);
+   //    traderContract.methods
+   //       .sellOrder(stockInfo.stockAddress)
+   //       .send({
+   //          from: walletAddress,
+   //          gas: 1500000,
+   //       })
+   //       .then((res) => {
+   //          alert("Sold 1 stock of " + name);
+   //       })
+   //       .catch((err) => {
+   //          if (err.message.includes("Owner Only")) {
+   //             alert(
+   //                "Transactions can only be made by the traders Wallet address"
+   //             );
+   //          } else {
+   //             alert(
+   //                "Not able to sell stock. Check if you have " +
+   //                   name +
+   //                   " stock in your inventory"
+   //             );
+   //          }
+   //       });
+   // };
 
    useEffect(() => {
       const getPriceLoop = setInterval(() => {
@@ -100,7 +100,7 @@ const StockCard = ({ name, amount, stockAddress, traderAddress }) => {
                <h1 className="text-7xl mx-4">{amount}</h1>
             </div>
          </div>
-         <div className="flex space-x-3 mt-3">
+         {/* <div className="flex space-x-3 mt-3">
             <button
                onClick={() => {
                   buyStock();
@@ -117,7 +117,7 @@ const StockCard = ({ name, amount, stockAddress, traderAddress }) => {
             >
                Sell
             </button>
-         </div>
+         </div> */}
       </div>
    );
 };

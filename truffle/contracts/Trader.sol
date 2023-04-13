@@ -36,6 +36,7 @@ struct Stock {
 //     }
 
 contract Trader {
+    address private government = 0x0B44caC31591F42123b25eec8f8AE6B161b5610C;
     address public owner;
     string public name;
     mapping(address => uint) public stockIndex;
@@ -52,6 +53,7 @@ contract Trader {
     
 
     constructor(string memory _name, address _address) {
+        require(msg.sender == government, "Only government account can be used to deploy new traders.");
         owner = _address;
         name = _name;
         stocks.push(Stock({name: "", stockAddress: address(0), amount: 0}));
@@ -90,12 +92,6 @@ contract Trader {
 
     function getStocks() view public restricted returns(Stock[] memory){
         return stocks;
-    }
-
-    function unsold_amount(
-        address _contractAddress
-    ) public view returns (uint) {
-        return StockInterface(_contractAddress).unsold_amount();
     }
 
     function buyOrder(

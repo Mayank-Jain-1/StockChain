@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Stock from "../abis/Stock.json";
 import web3 from "../connections";
-import axios from "axios";
 import Whitelist from "../abis/Whitelist.json";
 import DeployStock from "../components/deploy/DeployStock";
 import DeployTrader from "../components/deploy/DeployTrader";

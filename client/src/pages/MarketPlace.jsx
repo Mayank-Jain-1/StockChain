@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import BuyStockCard from "../components/marketplace/BuyStockCard";
@@ -29,7 +28,7 @@ const MarketPlace = () => {
             if (amount === 0) {
                alert("No Eth to be credited. Dont withdraw empty amounts");
             } else {
-               alert(`Credited ${amount} Eth to your wallet`);
+               alert(`Credited ${amount * 10**18} Wei to your wallet`);
             }
          });
    };

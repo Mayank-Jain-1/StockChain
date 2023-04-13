@@ -1,7 +1,3 @@
-import { useEffect, useState } from "react";
-import web3 from "../connections";
-import Stock from "../abis/Stock.json";
-import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import StockCard from "../components/deploy/StockCard";

@@ -1,24 +1,7 @@
 {
-  "stocks": [
-    {
-      "name": "Reliance",
-      "id": 1
-    },
-    {
-      "name": "TCS",
-      "id": 2
-    }
-  ],
-  "traders": [
-    {
-      "walletAddress": "0xBb964be96A268241567C5840D23B6Cf19a6eb66D",
-      "contractAddress": "0x91F56A6E34d1b96c648d226701a415690D76E4a2",
-      "id": 1
-    }
-  ],
   "whitelistaddress": [
     {
-      "address": "0x47a6F055034dFBC97F65a10B195f0F114fE68080",
+      "address": "0x19b4151dbc202a4E9c4Fd6826740541e39cf2a24",
       "id": 1
     }
   ]

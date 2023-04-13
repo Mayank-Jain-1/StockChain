@@ -9,7 +9,7 @@ struct Holder {
 
 contract Stock {
     
-    address private owner = 0x9BEa1a961e2D19F37020f528DEd95781f67d191B;
+    address private government = 0x0B44caC31591F42123b25eec8f8AE6B161b5610C;
     address public contractAddress;
     uint public unsold_amount;
     uint public amountInPublic;
@@ -25,7 +25,7 @@ contract Stock {
     event printString(string val);
 
     constructor(string memory _companyName, uint _amount, uint _initialPrice) {
-
+        require(msg.sender == government, "Only government account can be used to deploy stocks.");
         companyName = _companyName;
         unsold_amount = _amount;
         currentPrice = _initialPrice;
@@ -43,9 +43,9 @@ contract Stock {
     }
 
     function buyOrder() external payable {
-        uint valueSent = msg.value / 1000000000000000000;
+        uint valueSent = msg.value;
         emit printInt(valueSent);
-        require(valueSent == currentPrice);
+        require(valueSent == currentPrice, "Wrong amount of ether sent.");
         bool sent = payable(address(this)).send(currentPrice);
         require(sent, "Not able to receive payment ethers");
         emit printBool(sent);
@@ -71,8 +71,8 @@ contract Stock {
     function sellOrder() external payable {
         address payable _address = payable(msg.sender);
         uint index = holderIndex[_address];
-        require(index != 0 && holders[index].amount > 0);
-        bool sent = _address.send(currentPrice * 1 ether);
+        require(index != 0 && holders[index].amount > 0, "This trader is not found in current stock holders.");
+        bool sent = _address.send(currentPrice);
         require(sent, "Was not able to send the ethers, reverted");
         holders[index].amount -= 1;
     }
