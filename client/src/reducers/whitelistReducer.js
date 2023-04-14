@@ -1,4 +1,4 @@
-const initialState = "";
+const initialState = "0x18B2AdADbD56DFA8b88E6c895325b46C9364749a";
 
 const whitelistReducer = (state = initialState, action) => {
    switch (action.type) {

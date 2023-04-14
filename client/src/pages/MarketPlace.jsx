@@ -39,7 +39,7 @@ const MarketPlace = () => {
       <div className="flex flex-col items-center p-5">
          <div className="max-w-3xl w-full space-y-4">
             <h1 className="text-4xl text-center my-5">
-               Buy and sell stocks through Blockchaiin
+               Buy and sell stocks through Blockchain!
             </h1>
             <label htmlFor="">Trader Contract Address</label>
             <input

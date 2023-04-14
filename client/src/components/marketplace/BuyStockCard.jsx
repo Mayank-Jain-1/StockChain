@@ -160,8 +160,8 @@ const BuyStockCard = ({ traderAddress, name }) => {
             {stockInfo.name}
          </h3>
          <p>
-            <strong className="text-lg">Price: </strong>
-            {stockInfo.price}
+            <strong className="text-lg">Price (Eth) : </strong>
+            {stockInfo.price / 10**18 }
          </p>
          <p>
             <strong className="text-lg">Stock Address: </strong>

@@ -12,7 +12,7 @@ const Navbar = () => {
       addWalletListener();
    });
 
-   const [page, setPage] = useState("");
+   const [page, setPage] = useState(window.location.pathname.slice(1));
 
    const connectwallet = async () => {
       if (
