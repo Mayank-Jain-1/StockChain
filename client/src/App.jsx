@@ -106,9 +106,9 @@ const App = () => {
       <BrowserRouter>
          <Navbar />
          <Routes>
-            <Route path="/marketplace" element={<MarketPlace />} />
-            <Route path="/home" element={<Home />} />
+            <Route exact path="/" element={<Home />} />
             <Route path="/deploy" element={<Deploy />} />
+            <Route path="/marketplace" element={<MarketPlace />} />
             <Route path="/trader" element={<Trader />} />
          </Routes>
       </BrowserRouter>

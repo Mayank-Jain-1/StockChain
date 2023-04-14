@@ -70,8 +70,8 @@ const StockCard = ({ name }) => {
                <p className="text-white">{stockInfo.unsold}</p>
             </div>
             <div>
-               <p className="text-primary font-semibold">Price</p>
-               <p className="text-white">{stockInfo.price}</p>
+               <p className="text-primary font-semibold">Price (Eth)</p>
+               <p className="text-white">{stockInfo.price / (10**18)} </p>
             </div>
             <div>
                <p className="text-primary font-semibold">In Public</p>

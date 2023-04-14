@@ -12,7 +12,7 @@ const Navbar = () => {
       addWalletListener();
    });
 
-   const [page, setPage] = useState("home");
+   const [page, setPage] = useState("");
 
    const connectwallet = async () => {
       if (
@@ -87,11 +87,11 @@ const Navbar = () => {
          <div className="flex items-center  justify-center shadow-lg  bg-black p-3 border-y-1 border-white">
             <ul className="space-x-3">
                <Link
-                  onClick={() => setPage("home")}
+                  onClick={() => setPage("")}
                   className={`p-3 ${
-                     page === "home" ? "text-primary" : "text-white"
+                     page === "" ? "text-primary" : "text-white"
                   }`}
-                  to="/home"
+                  to="/"
                >
                   Home
                </Link>
