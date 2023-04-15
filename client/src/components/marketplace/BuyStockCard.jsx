@@ -17,7 +17,6 @@ const BuyStockCard = ({ traderAddress, name }) => {
       amountInPublic: 0,
       address: "",
    });
-   // console.log("stockInfo: ", stockInfo);
    //COde to initially fetch the address
    const getStockAddress = async () => {
       if (!whitelistAddress) {

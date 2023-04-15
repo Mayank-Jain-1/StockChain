@@ -41,29 +41,6 @@ const TraderCard = ({ traderAddress }) => {
          walletAddress: walletAddress
       })
    };
-   //Code to fetch other details form stock address
-   // const fetchDetails = async () => {
-   //    const contract = new web3.eth.Contract(Trader.abi, traderInfo.address);
-   //    const unsold = await contract.methods
-   //       .unsold_amount()
-   //       .call()
-   //    const price = await  contract.methods
-   //       .currentPrice()
-   //       .call()
-   //    const amountInPublic = await contract.methods
-   //       .amountInPublic()
-   //       .call()
-   //    settraderInfo({
-   //       ...traderInfo,
-   //       price: price,
-   //       unsold: unsold,
-   //       amountInPublic: amountInPublic
-   //    })
-   //    // console.log("Fetched Details: ", res);
-   // };
-   // useEffect(() => {
-   //    get();
-   // }, [whitelistAddress]);
 
    useEffect(() => {
       if (traderInfo.contractAddress) {

@@ -47,7 +47,6 @@ const StockCard = ({ name }) => {
          unsold: unsold,
          amountInPublic: amountInPublic
       })
-      // console.log("Fetched Details: ", res);
    };
    useEffect(() => {
       getStockAddress();

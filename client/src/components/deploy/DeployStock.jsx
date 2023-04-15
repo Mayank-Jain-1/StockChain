@@ -36,7 +36,7 @@ const DeployStock = () => {
             console.log("Res: ", res);
          })
          .catch((err) => {
-            console.log("er from here", err);
+            console.log("err from here", err);
          });
    };
 
@@ -75,7 +75,6 @@ const DeployStock = () => {
          .send({ from: account, gas: 1500000 })
          .on("receipt", (receipt) => {
             let stockAddress = receipt.contractAddress;
-            console.log(receipt);
             const whitelistContract = new web3.eth.Contract(
                Whitelist.abi,
                whitelistAddress

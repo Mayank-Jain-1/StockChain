@@ -14,7 +14,6 @@ const DeployTrader = () => {
    const governmentAccount = useSelector((store) => store.governmentAccount);
    const whitelistAddress = useSelector((store) => store.whitelistAddress);
    const traders = useSelector((store) => store.traders);
-   console.log("traders: ", traders);
 
    const [deployParams, setDeployParams] = useState({
       name: "",

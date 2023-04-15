@@ -158,8 +158,6 @@ const Trader = () => {
    useEffect(() => {
       if (isVerified) {
          const fetchLoop = setInterval(() => {
-            console.log(isVerified);
-            console.log("Loop is running");
             fetchDetails();
          }, 1000);
          return () => {

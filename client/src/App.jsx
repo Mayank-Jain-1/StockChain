@@ -32,7 +32,7 @@ const App = () => {
             console.log("Res: ", res);
          })
          .catch((err) => {
-            console.log("er from here", err);
+            console.log("err from here", err);
          });
    };
 
@@ -53,7 +53,6 @@ const App = () => {
    const deployWhitelist = async () => {
       if (address) {
          const whitelistContract = new web3.eth.Contract(Whitelist.abi);
-         console.log("Going to deploy");
          whitelistContract
             .deploy({
                data: Whitelist.bytecode,

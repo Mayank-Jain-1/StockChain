@@ -7,7 +7,6 @@ import Stock from "../../abis/Stock.json";
 const StockCard = ({ name, amount, stockAddress, traderAddress }) => {
 
    const web3 = new Web3(window.ethereum);
-   console.log('amount: ', amount);
    const walletAddress = useSelector((store) => store.walletAddress);
    const [stockInfo, setStockInfo] = useState({
       name: name,
