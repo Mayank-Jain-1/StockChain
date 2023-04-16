@@ -1,5 +1,6 @@
 StockChain - A new way to Buy and Sell stocks. 
 Deployed Website link - [StockChain](https://stockchain-383405.uc.r.appspot.com/trader)
+
 By - [@Mayank Jain](https://github.com/Mayank-Jain-1) and [@YashBansal](https://github.com/Y-a-s-h-b)
 
 *#SolvingForIndia #GeeksForGeeks #Google Cloud #AMD*
@@ -42,8 +43,8 @@ Note* : Currently price manipulation on buy and sell stocks has not been impleme
 
 
 # Tech Used / Worflow followed
-1. Remix for initial creating of Contracts and manual testing of contract.
 ### Development Environment
+1. Remix for initial creating of Contracts and manual testing of contract.
 1. Using Truffle to compile contracts
 1. React.js for frontend, Redux used for storing global state provider. 
 1. Web3.js as a web3 provider.
