@@ -1,4 +1,5 @@
 StockChain - A new way to Buy and Sell stocks. 
+Deployed Website link - [StockChain](https://stockchain-383405.uc.r.appspot.com/trader)
 By - [@Mayank Jain](https://github.com/Mayank-Jain-1) and [@YashBansal](https://github.com/Y-a-s-h-b)
 
 *#SolvingForIndia #GeeksForGeeks #Google Cloud #AMD*
@@ -38,3 +39,19 @@ You must have metamask installed in your browser to interact with StockChain
 1. Once a stock is sold ethereum are stored into the Trader contract address. Using the traders wallet address all the funds in the contract can be withdrawn into the wallet from the MarketPlace itself.
 
 Note* : Currently price manipulation on buy and sell stocks has not been implemented. It is an obvious and must integration in this application. So sit tight you will be seeing it in near future. 😁
+
+
+# Tech Used / Worflow followed
+1. Remix for initial creating of Contracts and manual testing of contract.
+### Development Environment
+1. Using Truffle to compile contracts
+1. React.js for frontend, Redux used for storing global state provider. 
+1. Web3.js as a web3 provider.
+1. Ganache as a local test ethereum blockchain.
+1. Json-server for making a pseudo server for fast testing, debugging and optimazing.
+
+### Production Environment
+1. React.js for frontend, Redux used for storing global state provider.
+1. Metamask for handling wallets and a web3 provider. 
+1. Making a Web3 instance of `window.ethereum` given by metamask for running transactions.
+1. Using a Google Cloud AMD VM instance to deploy our application on. 
